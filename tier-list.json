@@ -1,8 +1,8 @@
 {
   "activeMode": "lineup",
-  "activeRole": "Sát thủ",
-  "activePosition": "AD",
-  "activeLineupRowId": "2c7cc3f3-574c-4e6c-b9ef-3b495171d20b",
+  "activeRole": "Đấu sĩ",
+  "activePosition": "Top",
+  "activeLineupRowId": "64394906-b5a4-48f4-b4f6-678ace204224",
   "assignmentsByPosition": {
     "Top": {
       "Biron": "B",
@@ -104,50 +104,127 @@
       "label": "S",
       "slots": {
         "Top": [
-          "Sinestrea"
+          "Biron",
+          "Qi",
+          "Ryoma",
+          "Omen"
         ],
-        "Mid": [],
-        "Jungle": [],
+        "Mid": [
+          "Rouie"
+        ],
+        "Jungle": [
+          "Tachi"
+        ],
         "AD": [],
-        "SP": []
+        "SP": [
+          "Toro"
+        ]
       }
     },
     {
       "id": "ec944912-70ac-4a55-b77c-5abed1efb18e",
-      "label": "A",
+      "label": "S",
       "slots": {
-        "Top": [],
-        "Mid": [],
-        "Jungle": [],
-        "AD": [],
-        "SP": []
+        "Top": [
+          "Yan",
+          "Mina",
+          "Toro"
+        ],
+        "Mid": [
+          "Lorion"
+        ],
+        "Jungle": [
+          "Nakroth",
+          "Butterfly"
+        ],
+        "AD": [
+          "Valhein"
+        ],
+        "SP": [
+          "Dyadia"
+        ]
       }
     },
     {
       "id": "7e5c0557-4ba6-4c75-a0f1-2050331b6ae3",
-      "label": "B",
+      "label": "S",
       "slots": {
-        "Top": [],
-        "Mid": [],
-        "Jungle": [],
-        "AD": [],
-        "SP": []
+        "Top": [
+          "Florentino"
+        ],
+        "Mid": [
+          "Zata",
+          "Jinna"
+        ],
+        "Jungle": [
+          "Max"
+        ],
+        "AD": [
+          "Stuart",
+          "Capheny"
+        ],
+        "SP": [
+          "Dolia",
+          "Toro"
+        ]
       }
     },
     {
       "id": "7ee79780-ab20-413b-ae92-74f0856b200d",
       "label": "C",
       "slots": {
-        "Top": [],
-        "Mid": [],
+        "Top": [
+          "Taara"
+        ],
+        "Mid": [
+          "Liliana"
+        ],
         "Jungle": [],
-        "AD": [],
-        "SP": []
+        "AD": [
+          "Hayate"
+        ],
+        "SP": [
+          "Krizzix"
+        ]
       }
     },
     {
       "id": "3ebe7cb6-6253-45b6-85bb-9ad2e21799b0",
       "label": "D",
+      "slots": {
+        "Top": [
+          "Qi"
+        ],
+        "Mid": [
+          "Ignis"
+        ],
+        "Jungle": [],
+        "AD": [
+          "Valhein"
+        ],
+        "SP": [
+          "Cresht"
+        ]
+      }
+    },
+    {
+      "id": "64394906-b5a4-48f4-b4f6-678ace204224",
+      "label": "Đội hình 6",
+      "slots": {
+        "Top": [
+          "Ryoma"
+        ],
+        "Mid": [],
+        "Jungle": [
+          "Edras"
+        ],
+        "AD": [],
+        "SP": []
+      }
+    },
+    {
+      "id": "663bb813-271f-46bf-b77a-b0878ac09cb7",
+      "label": "Đội hình 7",
       "slots": {
         "Top": [],
         "Mid": [],
@@ -284,8 +361,145 @@
           "Zata",
           "Flowborn_AP"
         ]
+      },
+      "Toro": {
+        "seeded": true,
+        "synergy": [
+          "Eland’orr",
+          "Sinestrea",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Hayate"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi",
+          "Airi",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata"
+        ]
       }
     },
-    "lineups": {}
+    "lineups": {
+      "2c7cc3f3-574c-4e6c-b9ef-3b495171d20b": {
+        "seeded": true,
+        "counters": [
+          "Hayate"
+        ]
+      },
+      "7ee79780-ab20-413b-ae92-74f0856b200d": {
+        "seeded": true,
+        "counters": [
+          "Eland’orr",
+          "Flowborn_AD",
+          "Lorion",
+          "Marja",
+          "Y’bneth",
+          "Dyadia",
+          "Hayate",
+          "Rouie",
+          "Ryoma",
+          "Sinestrea",
+          "Astrid",
+          "Bolt Baron",
+          "Murad",
+          "TeeMee"
+        ]
+      },
+      "ec944912-70ac-4a55-b77c-5abed1efb18e": {
+        "seeded": true,
+        "counters": [
+          "Eland’orr",
+          "Flowborn_AD",
+          "Lorion",
+          "Marja",
+          "Y’bneth",
+          "Dyadia",
+          "Hayate",
+          "Rouie",
+          "Ryoma",
+          "Sinestrea",
+          "Astrid",
+          "Bolt Baron",
+          "Murad",
+          "TeeMee"
+        ]
+      },
+      "7e5c0557-4ba6-4c75-a0f1-2050331b6ae3": {
+        "seeded": true,
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi"
+        ]
+      },
+      "64394906-b5a4-48f4-b4f6-678ace204224": {
+        "seeded": true,
+        "counters": [
+          "Eland’orr",
+          "Flowborn_AD",
+          "Lorion",
+          "Marja",
+          "Y’bneth",
+          "Dyadia",
+          "Hayate",
+          "Rouie",
+          "Ryoma",
+          "Sinestrea",
+          "Astrid",
+          "Bolt Baron",
+          "Murad",
+          "TeeMee"
+        ]
+      },
+      "663bb813-271f-46bf-b77a-b0878ac09cb7": {
+        "seeded": true,
+        "counters": [
+          "Eland’orr",
+          "Flowborn_AD",
+          "Lorion",
+          "Marja",
+          "Y’bneth",
+          "Dyadia",
+          "Hayate",
+          "Rouie",
+          "Ryoma",
+          "Sinestrea",
+          "Astrid",
+          "Bolt Baron",
+          "Murad",
+          "TeeMee"
+        ]
+      },
+      "3ebe7cb6-6253-45b6-85bb-9ad2e21799b0": {
+        "seeded": true,
+        "counters": [
+          "Eland’orr",
+          "Flowborn_AD",
+          "Lorion",
+          "Marja",
+          "Y’bneth",
+          "Dyadia",
+          "Hayate",
+          "Rouie",
+          "Ryoma",
+          "Sinestrea",
+          "Astrid",
+          "Bolt Baron",
+          "Murad",
+          "TeeMee"
+        ]
+      }
+    }
   }
 }
