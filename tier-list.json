@@ -1,5 +1,5 @@
 {
-  "activeMode": "tier",
+  "activeMode": "lineup",
   "activeRole": "Sát thủ",
   "activePosition": "AD",
   "activeLineupRowId": "2c7cc3f3-574c-4e6c-b9ef-3b495171d20b",
@@ -103,7 +103,9 @@
       "id": "2c7cc3f3-574c-4e6c-b9ef-3b495171d20b",
       "label": "S",
       "slots": {
-        "Top": [],
+        "Top": [
+          "Sinestrea"
+        ],
         "Mid": [],
         "Jungle": [],
         "AD": [],

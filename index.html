@@ -1620,6 +1620,23 @@
             }
           }
 
+          try {
+            const response = await fetch(`./${JSON_FILE_NAME}`, {
+              cache: "no-store",
+            });
+
+            if (response.ok) {
+              const text = await response.text();
+              const repoState = normalizeSavedState(JSON.parse(text || "{}"));
+              if (applySavedState(repoState, "repoJson")) {
+                await saveCurrentState();
+                return;
+              }
+            }
+          } catch {
+            // Ignore repo JSON read errors and fallback to local state.
+          }
+
           const localState = normalizeSavedState(
             JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"),
           );
@@ -1796,6 +1813,8 @@
           statusLine.textContent =
             state.storageSource === "json"
               ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu đã khôi phục từ file JSON.`
+              : state.storageSource === "repoJson"
+                ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu đã nạp từ tier-list.json trên repo.`
               : state.storageSource === "localStorage"
                 ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu cục bộ đã được khôi phục.`
                 : state.storageSource === "import"
