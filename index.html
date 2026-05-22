@@ -1,0 +1,2777 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tier List Tướng Liên Quân</title>
+    <style>
+      :root {
+        --bg: #10131c;
+        --panel: #181d2a;
+        --panel-2: #20283a;
+        --text: #f4f7ff;
+        --muted: #aab4ca;
+        --border: rgba(255, 255, 255, 0.12);
+        --accent: #f4c44d;
+        --danger: #ff5f6d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background: radial-gradient(
+          circle at top,
+          #222b46 0,
+          var(--bg) 45%,
+          #080a10 100%
+        );
+        color: var(--text);
+      }
+
+      header {
+        padding: 28px 24px 16px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(12, 15, 23, 0.78);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(24px, 3vw, 38px);
+        letter-spacing: 0.3px;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+        align-items: center;
+      }
+
+      .search-box {
+        flex: 1 1 260px;
+        max-width: 520px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        background: var(--panel-2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+      }
+
+      .search-box input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: var(--text);
+        font-size: 15px;
+      }
+
+      button {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: linear-gradient(135deg, #2c354d, #1d2435);
+        color: var(--text);
+        padding: 10px 14px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: 0.18s ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        border-color: rgba(244, 196, 77, 0.55);
+      }
+
+      button.active {
+        background: linear-gradient(135deg, #f4c44d, #c98c19);
+        color: #141414;
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+
+      main.workspace {
+        width: min(1700px, calc(100% - 28px));
+        margin: 18px auto 42px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      main.workspace.sidebar-open {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+      }
+
+      .workspace-main {
+        display: grid;
+        gap: 18px;
+        min-width: 0;
+      }
+
+      .view-tabs,
+      .role-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 14px;
+        background: rgba(24, 29, 42, 0.72);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+      }
+
+      .position-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 14px;
+        background: rgba(24, 29, 42, 0.72);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+      }
+
+      .role-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .role-count {
+        min-width: 22px;
+        height: 22px;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        font-size: 12px;
+      }
+
+      .tier-board {
+        display: grid;
+        gap: 10px;
+      }
+
+      .tier-row {
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr);
+        min-height: 112px;
+        background: rgba(255, 255, 255, 0.045);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        overflow: hidden;
+      }
+
+      .tier-label {
+        display: grid;
+        place-items: center;
+        font-size: 34px;
+        font-weight: 900;
+        color: #151515;
+      }
+
+      .tier-S {
+        background: #ff7070;
+      }
+      .tier-A {
+        background: #ffb45e;
+      }
+      .tier-B {
+        background: #ffe66d;
+      }
+      .tier-C {
+        background: #8ee287;
+      }
+      .tier-D {
+        background: #86c5ff;
+      }
+
+      .drop-zone {
+        min-height: 112px;
+        padding: 12px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        background: rgba(12, 15, 23, 0.42);
+        transition: 0.16s ease;
+      }
+
+      .drop-zone.drag-over {
+        background: rgba(244, 196, 77, 0.14);
+        box-shadow: inset 0 0 0 2px rgba(244, 196, 77, 0.5);
+      }
+
+      .formation-board {
+        background: rgba(24, 29, 42, 0.74);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 12px;
+        overflow-x: auto;
+      }
+
+      .formation-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+        min-width: 980px;
+      }
+
+      .formation-table th,
+      .formation-table td {
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .formation-head th {
+        padding: 0 10px 6px;
+        color: var(--muted);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+      }
+
+      .lineup-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 10px;
+      }
+
+      .lineup-add-btn {
+        border-radius: 999px;
+        padding: 8px 14px;
+      }
+
+      .formation-row {
+        transition: 0.16s ease;
+      }
+
+      .formation-row.active td {
+        box-shadow: inset 0 0 0 2px rgba(244, 196, 77, 0.38);
+      }
+
+      .lineup-label-cell {
+        min-width: 180px;
+        width: 180px;
+        border-radius: 14px;
+        background: rgba(9, 12, 19, 0.54);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 10px;
+      }
+
+      .lineup-label-wrap {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .lineup-label-input {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(12, 15, 23, 0.8);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 7px 9px;
+        font-size: 13px;
+      }
+
+      .lineup-delete-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 999px;
+        padding: 0;
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .formation-slot-cell {
+        min-width: 150px;
+        padding: 0 4px;
+      }
+
+      .lineup-drop-zone {
+        min-height: 88px;
+        background: rgba(9, 12, 19, 0.54);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 8px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+
+      .lineup-drop-zone .hero-card {
+        width: 72px;
+      }
+
+      .lineup-drop-zone .hero-img-wrap {
+        width: 58px;
+        height: 58px;
+      }
+
+      .hero-pool-panel {
+        background: rgba(24, 29, 42, 0.86);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 18px;
+      }
+
+      .panel-title {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+
+      .panel-title h2 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .hint {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.45;
+        text-align: right;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+        gap: 12px;
+      }
+
+      .hero-card {
+        width: 82px;
+        user-select: none;
+        cursor: grab;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(0, 0, 0, 0.18)
+        );
+        padding: 6px;
+        transition: 0.16s ease;
+        position: relative;
+      }
+
+      .hero-card:active {
+        cursor: grabbing;
+      }
+
+      .hero-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(244, 196, 77, 0.65);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.26);
+      }
+
+      .hero-card.assigned::after {
+        content: attr(data-tier);
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 22px;
+        height: 22px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: var(--accent);
+        color: #151515;
+        font-size: 12px;
+        font-weight: 900;
+        border: 2px solid rgba(0, 0, 0, 0.35);
+      }
+
+      .hero-remove-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        background: rgba(8, 10, 15, 0.78);
+        color: #fff;
+        font-size: 13px;
+        line-height: 1;
+        padding: 0;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.16s ease;
+      }
+
+      .hero-card.can-remove:hover .hero-remove-btn {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .hero-remove-btn:hover {
+        background: rgba(255, 95, 109, 0.92);
+        border-color: rgba(255, 180, 188, 0.95);
+        transform: scale(1.08);
+      }
+
+      .role-badge {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        max-width: 68px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 3px 6px;
+        border-radius: 999px;
+        background: rgba(12, 15, 23, 0.82);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 800;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(8px);
+      }
+
+      .hero-img-wrap {
+        width: 68px;
+        height: 68px;
+        margin: 0 auto 6px;
+        border-radius: 13px;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.18);
+        background: #111827;
+      }
+
+      .hero-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero-name {
+        min-height: 28px;
+        color: #f7f7f7;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.15;
+        font-weight: 700;
+        overflow-wrap: anywhere;
+      }
+
+      .drop-zone .hero-card {
+        width: 78px;
+      }
+
+      .drop-zone .hero-img-wrap {
+        width: 64px;
+        height: 64px;
+      }
+
+      .drop-zone.lineup-drop-zone .hero-card {
+        width: 72px;
+      }
+
+      .drop-zone.lineup-drop-zone .hero-img-wrap {
+        width: 58px;
+        height: 58px;
+      }
+
+      .empty-text {
+        color: rgba(255, 255, 255, 0.35);
+        align-self: center;
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      .status-line {
+        color: var(--muted);
+        font-size: 13px;
+        min-height: 18px;
+        margin-top: 10px;
+      }
+
+      .insight-sidebar {
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        background: rgba(19, 24, 36, 0.88);
+        padding: 16px;
+        display: none;
+        gap: 14px;
+        align-content: start;
+        height: fit-content;
+        position: sticky;
+        top: 116px;
+        max-height: calc(100vh - 136px);
+        overflow-y: auto;
+        opacity: 0;
+        transform: translateX(16px);
+        pointer-events: none;
+        transition: 0.18s ease;
+      }
+
+      main.workspace.sidebar-open .insight-sidebar {
+        display: grid;
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+
+      .sidebar-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .sidebar-head h2 {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .ghost-btn {
+        padding: 7px 12px;
+        font-size: 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .sidebar-subtitle {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .sidebar-block {
+        display: grid;
+        gap: 8px;
+      }
+
+      .sidebar-block h3 {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .sidebar-grid {
+        grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+        gap: 9px;
+      }
+
+      .sidebar-grid .hero-card {
+        width: 74px;
+      }
+
+      .sidebar-grid .hero-img-wrap {
+        width: 60px;
+        height: 60px;
+      }
+
+      .sidebar-edit-zone {
+        min-height: 160px;
+        padding: 10px;
+      }
+
+      @media (max-width: 1180px) {
+        main.workspace,
+        main.workspace.sidebar-open {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .insight-sidebar {
+          position: static;
+          max-height: none;
+          opacity: 1;
+          transform: none;
+          pointer-events: auto;
+        }
+
+        main.workspace:not(.sidebar-open) .insight-sidebar {
+          display: none;
+        }
+      }
+
+      @media (max-width: 720px) {
+        main.workspace {
+          width: min(100% - 16px, 1700px);
+        }
+
+        .tier-row {
+          grid-template-columns: 64px minmax(0, 1fr);
+        }
+
+        .tier-label {
+          font-size: 26px;
+        }
+
+        .hero-grid {
+          grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+          gap: 9px;
+        }
+
+        .hero-card {
+          width: 74px;
+        }
+
+        .hero-img-wrap {
+          width: 60px;
+          height: 60px;
+        }
+
+        .hint {
+          text-align: left;
+        }
+
+        .panel-title {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .formation-table {
+          min-width: 900px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Tier List Tướng Liên Quân Mobile</h1>
+      <p class="subtitle">
+        Chuyển giữa tab Tier List và Đội Hình. Kéo thả tướng vào các vùng điểm
+        S, A, B, C, D theo từng vị trí để sắp xếp và theo dõi kèo phối hợp/khắc
+        chế.
+      </p>
+
+      <div class="toolbar">
+        <label class="search-box">
+          🔎
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Tìm tướng, ví dụ: Valhein, Nakroth, Florentino..."
+          />
+        </label>
+
+        <button id="saveBtn">Lưu</button>
+        <button id="resetBtn">Reset tier</button>
+      </div>
+
+      <div class="status-line" id="statusLine"></div>
+    </header>
+
+    <main class="workspace" id="workspace">
+      <section class="workspace-main">
+        <nav class="view-tabs" id="viewTabs"></nav>
+
+        <nav class="position-tabs" id="positionTabs"></nav>
+
+        <section class="tier-board" id="tierBoard"></section>
+        <section class="formation-board hidden" id="formationBoard"></section>
+
+        <nav class="role-tabs" id="roleTabs"></nav>
+
+        <section class="hero-pool-panel">
+          <div class="panel-title">
+            <h2 id="poolTitle">Danh sách tướng</h2>
+            <span class="hint">
+              Đặt file <b>heroes.json</b> cùng thư mục với file HTML này để dùng
+              dữ liệu bạn đã crawl bằng BeautifulSoup4.
+            </span>
+          </div>
+
+          <div class="hero-grid" id="heroPool"></div>
+        </section>
+      </section>
+
+      <aside class="insight-sidebar" id="insightSidebar">
+        <div class="sidebar-head">
+          <h2 id="sidebarTitle">Gợi ý đội hình</h2>
+          <button class="ghost-btn" id="closeSidebarBtn">Đóng</button>
+        </div>
+        <p class="sidebar-subtitle" id="sidebarSubtitle">
+          Bấm vào tướng hoặc một hàng đội hình để mở gợi ý khắc chế/phối hợp.
+        </p>
+        <section class="sidebar-block" id="synergySection">
+          <h3>Tướng phối hợp (kéo thả để chỉnh)</h3>
+          <div class="hero-grid sidebar-grid drop-zone sidebar-edit-zone" id="synergyGrid"></div>
+        </section>
+        <section class="sidebar-block" id="counterSection">
+          <h3>Tướng khắc chế (kéo thả để chỉnh)</h3>
+          <div class="hero-grid sidebar-grid drop-zone sidebar-edit-zone" id="counterGrid"></div>
+        </section>
+      </aside>
+    </main>
+
+    <script>
+      /*
+      File này hỗ trợ 3 kiểu heroes.json:
+
+      Cách 1:
+      [
+        {
+          "name": "Valhein",
+          "image": "https://...",
+          "roles": ["AD"]
+        }
+      ]
+
+      Cách 2:
+      [
+        {
+          "name": "Valhein",
+          "image_url": "https://...",
+          "role": "AD"
+        }
+      ]
+
+      Cách 3:
+      {
+        "Valhein": "https://...",
+        "Nakroth": "https://..."
+      }
+
+      Nếu heroes.json không có roles/role, trang sẽ tự gán vị trí thủ công theo tên tướng.
+    */
+
+      const SAMPLE_HEROES = [
+        {
+          name: "Valhein",
+          image:
+            "https://lienquan.garena.vn/wp-content/uploads/2024/05/83d9de6ce9963f9ea406db2edd81707f5ee04e75516431-1.jpg",
+          roles: ["AD"],
+        },
+        {
+          name: "Florentino",
+          image:
+            "https://lienquan.garena.vn/wp-content/uploads/2024/05/62cda115a78344fc4fa5154881c9da255c25f64ee32a71.jpg",
+          roles: ["Top"],
+        },
+        {
+          name: "Edras",
+          image:
+            "https://lienquan.garena.vn/wp-content/uploads/2025/10/59500.jpg",
+          roles: ["Top"],
+        },
+      ];
+
+      const POSITION_ORDER = ["Top", "Mid", "Jungle", "AD", "SP", "Khác"];
+      const LEGACY_ROLE_TO_POSITION = {
+        "Đấu sĩ": "Top",
+        "Đỡ đòn": "SP",
+        "Pháp sư": "Mid",
+        "Sát thủ": "Jungle",
+        "Trợ thủ": "SP",
+        "Xạ thủ": "AD",
+        Khác: "Khác",
+        Top: "Top",
+        Mid: "Mid",
+        Jungle: "Jungle",
+        AD: "AD",
+        SP: "SP",
+      };
+
+      const tiers = ["S", "A", "B", "C", "D"];
+
+      const DEFAULT_ROLE_BY_HERO = {
+        Flowborn_AP: ["Pháp sư"],
+        Flowborn_AD: ["Xạ thủ"],
+        Dyadia: ["Trợ thủ"],
+        Edras: ["Đấu sĩ"],
+        Goverra: ["Pháp sư"],
+        Heino: ["Pháp sư"],
+        Billow: ["Sát thủ"],
+        "Bolt Baron": ["Đấu sĩ"],
+        Biron: ["Đấu sĩ"],
+        Dolia: ["Trợ thủ"],
+        Charlotte: ["Đấu sĩ"],
+        Tachi: ["Đấu sĩ"],
+        Dirak: ["Pháp sư"],
+        Qi: ["Đấu sĩ"],
+        Erin: ["Xạ thủ"],
+        Ming: ["Trợ thủ"],
+        Bijan: ["Đấu sĩ"],
+        Bonnie: ["Pháp sư"],
+        Teeri: ["Xạ thủ"],
+        Yue: ["Pháp sư"],
+        Yan: ["Đấu sĩ", "Sát thủ"],
+        Aya: ["Trợ thủ"],
+        Aoi: ["Sát thủ"],
+        Iggy: ["Pháp sư"],
+        Bright: ["Xạ thủ", "Sát thủ"],
+        Lorion: ["Pháp sư"],
+        Dextra: ["Đấu sĩ"],
+        Sinestrea: ["Sát thủ"],
+        Thorne: ["Xạ thủ"],
+        Allain: ["Đấu sĩ"],
+        Zata: ["Pháp sư", "Sát thủ"],
+        Rouie: ["Trợ thủ"],
+        Laville: ["Xạ thủ"],
+        Paine: ["Sát thủ", "Pháp sư"],
+        Ata: ["Đỡ đòn"],
+        Keera: ["Sát thủ", "Pháp sư"],
+        Ishar: ["Pháp sư"],
+        "Eland’orr": ["Xạ thủ"],
+        "Eland'orr": ["Xạ thủ"],
+        Krizzix: ["Trợ thủ"],
+        Volkath: ["Đấu sĩ", "Sát thủ"],
+        Celica: ["Xạ thủ"],
+        Zip: ["Trợ thủ", "Đỡ đòn"],
+        Enzo: ["Sát thủ"],
+        Yena: ["Đấu sĩ"],
+        Errol: ["Đấu sĩ"],
+        Capheny: ["Xạ thủ"],
+        Hayate: ["Xạ thủ"],
+        "D’Arcy": ["Pháp sư"],
+        "D'Arcy": ["Pháp sư"],
+        Veres: ["Đấu sĩ"],
+        Florentino: ["Đấu sĩ"],
+        Sephera: ["Pháp sư", "Trợ thủ"],
+        Quillen: ["Sát thủ"],
+        Wiro: ["Đỡ đòn", "Đấu sĩ"],
+        Richter: ["Đấu sĩ"],
+        Elsu: ["Xạ thủ"],
+        "Y’bneth": ["Đỡ đòn"],
+        "Y'bneth": ["Đỡ đòn"],
+        Amily: ["Đấu sĩ"],
+        Annette: ["Trợ thủ", "Pháp sư"],
+        Baldum: ["Đỡ đòn", "Trợ thủ"],
+        Roxie: ["Đấu sĩ", "Đỡ đòn"],
+        Marja: ["Pháp sư"],
+        Rourke: ["Đấu sĩ"],
+        Arum: ["Đỡ đòn", "Trợ thủ"],
+        Wisp: ["Xạ thủ"],
+        "The Flash": ["Pháp sư", "Sát thủ"],
+        Max: ["Đấu sĩ"],
+        Liliana: ["Pháp sư"],
+        Tulen: ["Pháp sư"],
+        Omen: ["Đấu sĩ"],
+        Lindis: ["Xạ thủ"],
+        TeeMee: ["Trợ thủ", "Đỡ đòn"],
+        Moren: ["Xạ thủ"],
+        "Kil’Groth": ["Đấu sĩ"],
+        "Kil'Groth": ["Đấu sĩ"],
+        Xeniel: ["Đỡ đòn", "Trợ thủ"],
+        "Wonder Woman": ["Đấu sĩ"],
+        Superman: ["Đấu sĩ"],
+        "Tel’Annas": ["Xạ thủ"],
+        "Tel'Annas": ["Xạ thủ"],
+        Astrid: ["Đấu sĩ"],
+        Ryoma: ["Đấu sĩ", "Sát thủ"],
+        Stuart: ["Xạ thủ"],
+        Arduin: ["Đấu sĩ", "Đỡ đòn"],
+        Zill: ["Sát thủ", "Pháp sư"],
+        Murad: ["Sát thủ"],
+        Ignis: ["Pháp sư"],
+        Zuka: ["Đấu sĩ", "Sát thủ"],
+        Airi: ["Đấu sĩ", "Sát thủ"],
+        Kaine: ["Sát thủ"],
+        Lauriel: ["Pháp sư"],
+        Raz: ["Pháp sư", "Sát thủ"],
+        Skud: ["Đấu sĩ", "Đỡ đòn"],
+        Preyta: ["Pháp sư"],
+        Ilumia: ["Pháp sư"],
+        Slimz: ["Xạ thủ"],
+        Arthur: ["Đấu sĩ", "Đỡ đòn"],
+        Kriknak: ["Sát thủ"],
+        "Ngộ Không": ["Sát thủ", "Đấu sĩ"],
+        Maloch: ["Đấu sĩ", "Đỡ đòn"],
+        Helen: ["Trợ thủ"],
+        Jinna: ["Pháp sư"],
+        Cresht: ["Đỡ đòn", "Trợ thủ"],
+        Natalya: ["Pháp sư"],
+        Lumburr: ["Đỡ đòn", "Trợ thủ"],
+        Fennik: ["Xạ thủ"],
+        Aleister: ["Pháp sư"],
+        Grakk: ["Đỡ đòn", "Trợ thủ"],
+        Nakroth: ["Sát thủ"],
+        Taara: ["Đỡ đòn", "Đấu sĩ"],
+        Toro: ["Đỡ đòn", "Trợ thủ"],
+        Yorn: ["Xạ thủ"],
+        Gildur: ["Đỡ đòn", "Pháp sư"],
+        Alice: ["Trợ thủ"],
+        "Azzen’Ka": ["Pháp sư"],
+        "Azzen'Ka": ["Pháp sư"],
+        Ormarr: ["Đấu sĩ", "Đỡ đòn"],
+        Butterfly: ["Sát thủ"],
+        Violet: ["Xạ thủ"],
+        Chaugnar: ["Trợ thủ", "Đỡ đòn"],
+        "Điêu Thuyền": ["Pháp sư"],
+        Zephys: ["Đấu sĩ", "Sát thủ"],
+        Kahlii: ["Pháp sư"],
+        Omega: ["Đỡ đòn", "Trợ thủ"],
+        "Triệu Vân": ["Đấu sĩ"],
+        Mganga: ["Pháp sư"],
+        Krixi: ["Pháp sư"],
+        Mina: ["Đỡ đòn"],
+        "Lữ Bố": ["Đấu sĩ"],
+        Veera: ["Pháp sư"],
+        Thane: ["Đỡ đòn"],
+        Valhein: ["Xạ thủ"],
+      };
+
+      function getDefaultRolesByName(name) {
+        const exactMatch = DEFAULT_ROLE_BY_HERO[name];
+        if (exactMatch) return exactMatch;
+
+        const normalizedInput = normalizeName(name);
+        const matchedKey = Object.keys(DEFAULT_ROLE_BY_HERO).find(
+          (key) => normalizeName(key) === normalizedInput,
+        );
+
+        return matchedKey
+          ? mapRolesToPositions(DEFAULT_ROLE_BY_HERO[matchedKey])
+          : ["Khác"];
+      }
+
+      function mapRolesToPositions(rawRoles) {
+        const roles = Array.isArray(rawRoles)
+          ? rawRoles
+          : String(rawRoles || "")
+              .split(/[|,;/]/)
+              .map((role) => role.trim())
+              .filter(Boolean);
+
+        const mapped = [];
+
+        roles.forEach((role) => {
+          const position = LEGACY_ROLE_TO_POSITION[role] || role;
+          if (!mapped.includes(position)) {
+            mapped.push(position);
+          }
+        });
+
+        return mapped.length > 0 ? mapped : ["Khác"];
+      }
+
+      const STORAGE_KEY = "lq-tier-list-v3";
+      const HANDLE_DB_NAME = "lq-tier-list-file-handle-db";
+      const HANDLE_DB_VERSION = 1;
+      const HANDLE_STORE = "handles";
+      const HANDLE_KEY = "tierJsonFile";
+      const JSON_FILE_NAME = "tier-list.json";
+      const BOARD_MODES = {
+        TIER: "tier",
+        LINEUP: "lineup",
+      };
+      const FORMATION_POSITIONS = POSITION_ORDER.filter(
+        (item) => item !== "Khác",
+      );
+      const LINEUP_LABEL_PREFIX = "Đội hình";
+      const TIER_SCORE = {
+        S: 5,
+        A: 4,
+        B: 3,
+        C: 2,
+        D: 1,
+      };
+      const SYNERGY_POSITION_PRIORITY = {
+        Top: ["Jungle", "Mid", "SP", "AD"],
+        Jungle: ["Mid", "Top", "SP", "AD"],
+        Mid: ["Jungle", "SP", "AD", "Top"],
+        AD: ["SP", "Mid", "Jungle", "Top"],
+        SP: ["AD", "Mid", "Jungle", "Top"],
+      };
+      const COUNTER_POSITION_PRIORITY = {
+        Top: ["AD", "Mid"],
+        Jungle: ["SP", "Mid"],
+        Mid: ["Jungle", "AD"],
+        AD: ["Top", "Jungle"],
+        SP: ["Mid", "Top"],
+      };
+
+      const state = {
+        heroes: [],
+        activeMode: BOARD_MODES.TIER,
+        activeRole: "Tất cả",
+        activePosition: "Top",
+        activeLineupRowId: "",
+        assignmentsByPosition: createEmptyAssignmentsByPosition(),
+        lineupRows: createDefaultLineupRows(),
+        customInsights: createEmptyCustomInsights(),
+        sidebar: {
+          open: false,
+          type: "hero",
+          heroName: "",
+          lineupRowId: "",
+        },
+        storageSource: "none",
+        fileHandle: null,
+      };
+
+      const workspace = document.getElementById("workspace");
+      const tierBoard = document.getElementById("tierBoard");
+      const formationBoard = document.getElementById("formationBoard");
+      const heroPool = document.getElementById("heroPool");
+      const viewTabs = document.getElementById("viewTabs");
+      const positionTabs = document.getElementById("positionTabs");
+      const roleTabs = document.getElementById("roleTabs");
+      const searchInput = document.getElementById("searchInput");
+      const resetBtn = document.getElementById("resetBtn");
+      const saveBtn = document.getElementById("saveBtn");
+      const statusLine = document.getElementById("statusLine");
+      const poolTitle = document.getElementById("poolTitle");
+      const insightSidebar = document.getElementById("insightSidebar");
+      const sidebarTitle = document.getElementById("sidebarTitle");
+      const sidebarSubtitle = document.getElementById("sidebarSubtitle");
+      const synergySection = document.getElementById("synergySection");
+      const counterSection = document.getElementById("counterSection");
+      const synergyGrid = document.getElementById("synergyGrid");
+      const counterGrid = document.getElementById("counterGrid");
+      const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+
+      function normalizeName(name) {
+        return String(name || "")
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[’']/g, "")
+          .trim();
+      }
+
+      function normalizeHero(rawHero) {
+        if (!rawHero) return null;
+
+        const name = rawHero.name || rawHero.hero_name || rawHero.title || "";
+        const image =
+          rawHero.image ||
+          rawHero.image_url ||
+          rawHero.img ||
+          rawHero.src ||
+          rawHero.avatar ||
+          "";
+        const detailUrl = rawHero.detail_url || rawHero.url || "";
+
+        let roles =
+          rawHero.roles ||
+          rawHero.role ||
+          rawHero.position ||
+          rawHero.class ||
+          rawHero.type ||
+          "";
+
+        if (typeof roles === "string") {
+          roles = mapRolesToPositions(roles);
+        } else if (Array.isArray(roles)) {
+          roles = mapRolesToPositions(roles);
+        }
+
+        if (!name) return null;
+
+        if (
+          !Array.isArray(roles) ||
+          roles.length === 0 ||
+          roles.includes("Khác")
+        ) {
+          roles = getDefaultRolesByName(name);
+        }
+
+        return {
+          name,
+          image,
+          detailUrl,
+          roles,
+        };
+      }
+
+      function normalizeHeroData(data) {
+        if (Array.isArray(data)) {
+          return data.map(normalizeHero).filter(Boolean);
+        }
+
+        if (data && typeof data === "object") {
+          return Object.entries(data)
+            .map(([name, value]) => {
+              if (typeof value === "string") {
+                return {
+                  name,
+                  image: value,
+                  detailUrl: "",
+                  roles: getDefaultRolesByName(name),
+                };
+              }
+
+              return normalizeHero({
+                name,
+                ...value,
+              });
+            })
+            .filter(Boolean);
+        }
+
+        return [];
+      }
+
+      function createEmptyAssignmentsByPosition() {
+        return POSITION_ORDER.reduce((acc, position) => {
+          acc[position] = {};
+          return acc;
+        }, {});
+      }
+
+      function createLineupRowId() {
+        if (window.crypto && window.crypto.randomUUID) {
+          return window.crypto.randomUUID();
+        }
+
+        const random = Math.random().toString(36).slice(2, 10);
+        return `lineup-${Date.now().toString(36)}-${random}`;
+      }
+
+      function createLineupSlots() {
+        return FORMATION_POSITIONS.reduce((acc, position) => {
+          acc[position] = [];
+          return acc;
+        }, {});
+      }
+
+      function createLineupRow(label = "") {
+        return {
+          id: createLineupRowId(),
+          label: String(label || "").trim(),
+          slots: createLineupSlots(),
+        };
+      }
+
+      function createDefaultLineupRows() {
+        return [createLineupRow(`${LINEUP_LABEL_PREFIX} 1`)];
+      }
+
+      function createEmptyCustomInsights() {
+        return {
+          heroes: {},
+          lineups: {},
+        };
+      }
+
+      function normalizeNamedHeroList(rawList) {
+        if (!Array.isArray(rawList)) {
+          return [];
+        }
+
+        return rawList
+          .filter((item) => typeof item === "string" && item.trim())
+          .filter((name, index, arr) => arr.indexOf(name) === index);
+      }
+
+      function normalizeCustomInsights(rawInsights) {
+        const normalized = createEmptyCustomInsights();
+
+        if (!rawInsights || typeof rawInsights !== "object") {
+          return normalized;
+        }
+
+        const rawHeroes =
+          rawInsights.heroes &&
+          typeof rawInsights.heroes === "object" &&
+          !Array.isArray(rawInsights.heroes)
+            ? rawInsights.heroes
+            : {};
+
+        Object.entries(rawHeroes).forEach(([heroName, value]) => {
+          const heroConfig =
+            value && typeof value === "object" && !Array.isArray(value)
+              ? value
+              : {};
+
+          normalized.heroes[heroName] = {
+            seeded: Boolean(heroConfig.seeded),
+            synergy: normalizeNamedHeroList(
+              heroConfig.synergy || heroConfig.support || [],
+            ),
+            counters: normalizeNamedHeroList(
+              heroConfig.counters || heroConfig.counter || [],
+            ),
+          };
+        });
+
+        const rawLineups =
+          rawInsights.lineups &&
+          typeof rawInsights.lineups === "object" &&
+          !Array.isArray(rawInsights.lineups)
+            ? rawInsights.lineups
+            : {};
+
+        Object.entries(rawLineups).forEach(([lineupKey, value]) => {
+          const lineupConfig =
+            value && typeof value === "object" && !Array.isArray(value)
+              ? value
+              : {};
+
+          if (!lineupConfig.seeded && !lineupConfig.counters) {
+            return;
+          }
+
+          normalized.lineups[lineupKey] = {
+            seeded: Boolean(lineupConfig.seeded),
+            counters: normalizeNamedHeroList(
+              lineupConfig.counters || lineupConfig.counter || [],
+            ),
+          };
+        });
+
+        return normalized;
+      }
+
+      function normalizeAssignmentsByPosition(
+        rawAssignments,
+        fallbackPosition,
+      ) {
+        const normalized = createEmptyAssignmentsByPosition();
+
+        if (!rawAssignments || typeof rawAssignments !== "object") {
+          return normalized;
+        }
+
+        const knownPositions = new Set(POSITION_ORDER);
+        const hasNestedPositions = Object.keys(rawAssignments).some((key) =>
+          knownPositions.has(key),
+        );
+
+        if (hasNestedPositions) {
+          POSITION_ORDER.forEach((position) => {
+            const board = rawAssignments[position];
+            if (board && typeof board === "object" && !Array.isArray(board)) {
+              normalized[position] = { ...board };
+            }
+          });
+
+          return normalized;
+        }
+
+        const targetPosition =
+          POSITION_ORDER.includes(fallbackPosition) && fallbackPosition
+            ? fallbackPosition
+            : "Top";
+
+        normalized[targetPosition] = { ...rawAssignments };
+        return normalized;
+      }
+
+      function normalizeLineupHeroList(rawList) {
+        if (typeof rawList === "string") {
+          return [rawList];
+        }
+
+        if (!Array.isArray(rawList)) {
+          return [];
+        }
+
+        return rawList
+          .filter((item) => typeof item === "string" && item.trim())
+          .filter((name, index, arr) => arr.indexOf(name) === index);
+      }
+
+      function normalizeLineupSlots(rawSlots) {
+        const slots = createLineupSlots();
+        if (!rawSlots || typeof rawSlots !== "object") {
+          return slots;
+        }
+
+        FORMATION_POSITIONS.forEach((position) => {
+          const rawCell = rawSlots[position];
+
+          if (Array.isArray(rawCell) || typeof rawCell === "string") {
+            slots[position] = normalizeLineupHeroList(rawCell);
+            return;
+          }
+
+          if (!rawCell || typeof rawCell !== "object") {
+            return;
+          }
+
+          const merged = [
+            ...normalizeLineupHeroList(rawCell.main || rawCell.primary || []),
+            ...normalizeLineupHeroList(
+              rawCell.extra || rawCell.secondary || rawCell.sub || [],
+            ),
+            ...normalizeLineupHeroList(rawCell.heroes || []),
+          ];
+          slots[position] = merged.filter(
+            (heroName, index, arr) => arr.indexOf(heroName) === index,
+          );
+        });
+
+        return slots;
+      }
+
+      function normalizeLineupRows(rawRows, legacyLineupsByTier) {
+        const normalized = [];
+        const seenIds = new Set();
+
+        function appendRow(rawId, rawLabel, rawSlots, indexHint) {
+          const rowId =
+            typeof rawId === "string" && rawId.trim()
+              ? rawId
+              : createLineupRowId();
+
+          if (seenIds.has(rowId)) {
+            return;
+          }
+
+          seenIds.add(rowId);
+          normalized.push({
+            id: rowId,
+            label:
+              String(rawLabel || "").trim() ||
+              `${LINEUP_LABEL_PREFIX} ${indexHint + 1}`,
+            slots: normalizeLineupSlots(rawSlots),
+          });
+        }
+
+        if (Array.isArray(rawRows)) {
+          rawRows.forEach((row, index) => {
+            if (!row || typeof row !== "object") return;
+            appendRow(
+              row.id,
+              row.label || row.name || row.title,
+              row.slots || row.positions || row.heroesByPosition || row,
+              index,
+            );
+          });
+        } else if (rawRows && typeof rawRows === "object") {
+          Object.entries(rawRows).forEach(([key, row], index) => {
+            if (!row || typeof row !== "object") return;
+            appendRow(
+              row.id || key,
+              row.label || row.name || row.title || key,
+              row.slots || row.positions || row.heroesByPosition || row,
+              index,
+            );
+          });
+        }
+
+        if (
+          normalized.length === 0 &&
+          legacyLineupsByTier &&
+          typeof legacyLineupsByTier === "object"
+        ) {
+          const legacyKeys = Object.keys(legacyLineupsByTier);
+          const sortedLegacyKeys = legacyKeys.sort((a, b) => {
+            const aTierIndex = tiers.indexOf(a);
+            const bTierIndex = tiers.indexOf(b);
+            if (aTierIndex === -1 && bTierIndex === -1) {
+              return a.localeCompare(b, "vi");
+            }
+            if (aTierIndex === -1) return 1;
+            if (bTierIndex === -1) return -1;
+            return aTierIndex - bTierIndex;
+          });
+
+          sortedLegacyKeys.forEach((legacyKey, index) => {
+            const legacyRow = legacyLineupsByTier[legacyKey];
+            if (!legacyRow || typeof legacyRow !== "object") return;
+            appendRow(
+              "",
+              legacyKey,
+              legacyRow,
+              index,
+            );
+          });
+        }
+
+        if (normalized.length === 0) {
+          return createDefaultLineupRows();
+        }
+
+        return normalized;
+      }
+
+      function normalizeSavedState(rawState) {
+        if (
+          !rawState ||
+          typeof rawState !== "object" ||
+          Array.isArray(rawState)
+        ) {
+          return null;
+        }
+
+        const normalizedAssignmentsByPosition = normalizeAssignmentsByPosition(
+          rawState.assignmentsByPosition || rawState.assignments || {},
+          rawState.activePosition,
+        );
+
+        const normalizedLineupRows = normalizeLineupRows(
+          rawState.lineupRows || rawState.lineups || [],
+          rawState.lineupsByTier ||
+            rawState.formationByTier ||
+            rawState.teamComps ||
+            {},
+        );
+
+        const normalizedCustomInsights = normalizeCustomInsights(
+          rawState.customInsights || rawState.insights || {},
+        );
+
+        const remappedLineupInsights = {};
+        normalizedLineupRows.forEach((row) => {
+          if (normalizedCustomInsights.lineups[row.id]) {
+            remappedLineupInsights[row.id] =
+              normalizedCustomInsights.lineups[row.id];
+            return;
+          }
+
+          if (row.label && normalizedCustomInsights.lineups[row.label]) {
+            remappedLineupInsights[row.id] =
+              normalizedCustomInsights.lineups[row.label];
+          }
+        });
+        normalizedCustomInsights.lineups = remappedLineupInsights;
+
+        const legacyActiveLineupKey =
+          typeof rawState.activeLineupTier === "string"
+            ? rawState.activeLineupTier
+            : "";
+        const resolvedActiveLineupRowId =
+          typeof rawState.activeLineupRowId === "string" &&
+          rawState.activeLineupRowId
+            ? rawState.activeLineupRowId
+            : normalizedLineupRows.find(
+                (row) =>
+                  row.id === legacyActiveLineupKey ||
+                  row.label === legacyActiveLineupKey,
+              )?.id || normalizedLineupRows[0]?.id || "";
+
+        return {
+          activeRole:
+            typeof rawState.activeRole === "string"
+              ? rawState.activeRole
+              : "Tất cả",
+          activeMode:
+            rawState.activeMode === BOARD_MODES.LINEUP
+              ? BOARD_MODES.LINEUP
+              : BOARD_MODES.TIER,
+          activePosition: POSITION_ORDER.includes(rawState.activePosition)
+            ? rawState.activePosition
+            : "Top",
+          activeLineupRowId: resolvedActiveLineupRowId,
+          assignmentsByPosition: normalizedAssignmentsByPosition,
+          lineupRows: normalizedLineupRows,
+          customInsights: normalizedCustomInsights,
+        };
+      }
+
+      function openHandleStore() {
+        if (!window.indexedDB) {
+          return Promise.resolve(null);
+        }
+
+        return new Promise((resolve, reject) => {
+          const request = indexedDB.open(HANDLE_DB_NAME, HANDLE_DB_VERSION);
+
+          request.onupgradeneeded = () => {
+            const db = request.result;
+            if (!db.objectStoreNames.contains(HANDLE_STORE)) {
+              db.createObjectStore(HANDLE_STORE);
+            }
+          };
+
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = () =>
+            reject(request.error || new Error("Không mở được kho handle"));
+        });
+      }
+
+      async function loadFileHandle() {
+        const db = await openHandleStore();
+        if (!db) return null;
+
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(HANDLE_STORE, "readonly");
+          const store = transaction.objectStore(HANDLE_STORE);
+          const request = store.get(HANDLE_KEY);
+
+          request.onsuccess = () => {
+            db.close();
+            resolve(request.result || null);
+          };
+
+          request.onerror = () => {
+            db.close();
+            reject(request.error || new Error("Không đọc được handle"));
+          };
+        });
+      }
+
+      async function saveFileHandle(handle) {
+        const db = await openHandleStore();
+        if (!db) return;
+
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(HANDLE_STORE, "readwrite");
+          const store = transaction.objectStore(HANDLE_STORE);
+          store.put(handle, HANDLE_KEY);
+
+          transaction.oncomplete = () => {
+            db.close();
+            resolve();
+          };
+
+          transaction.onerror = () => {
+            db.close();
+            reject(transaction.error || new Error("Không lưu được handle"));
+          };
+        });
+      }
+
+      async function saveCurrentState() {
+        const nextState = {
+          activeMode: state.activeMode,
+          activeRole: state.activeRole,
+          activePosition: state.activePosition,
+          activeLineupRowId: state.activeLineupRowId,
+          assignmentsByPosition: state.assignmentsByPosition,
+          lineupRows: state.lineupRows,
+          customInsights: state.customInsights,
+        };
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
+      }
+
+      async function loadSavedState() {
+        try {
+          state.fileHandle = await loadFileHandle();
+
+          if (state.fileHandle && state.fileHandle.requestPermission) {
+            const permission = await state.fileHandle.requestPermission({
+              mode: "readwrite",
+            });
+
+            if (permission !== "granted") {
+              state.fileHandle = null;
+            }
+          }
+
+          if (state.fileHandle) {
+            const file = await state.fileHandle.getFile();
+            const text = await file.text();
+            const savedState = normalizeSavedState(JSON.parse(text || "{}"));
+
+            if (savedState) {
+              state.activeMode = savedState.activeMode;
+              state.activeRole = savedState.activeRole;
+              state.activePosition = savedState.activePosition;
+              state.activeLineupRowId = savedState.activeLineupRowId;
+              state.assignmentsByPosition = savedState.assignmentsByPosition;
+              state.lineupRows = savedState.lineupRows;
+              state.customInsights = savedState.customInsights;
+              state.storageSource = "json";
+              ensureActiveLineupRow();
+              return;
+            }
+          }
+
+          const legacyState = normalizeSavedState(
+            JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"),
+          );
+
+          if (legacyState) {
+            state.activeMode = legacyState.activeMode;
+            state.activeRole = legacyState.activeRole;
+            state.activePosition = legacyState.activePosition;
+            state.activeLineupRowId = legacyState.activeLineupRowId;
+            state.assignmentsByPosition = legacyState.assignmentsByPosition;
+            state.lineupRows = legacyState.lineupRows;
+            state.customInsights = legacyState.customInsights;
+            state.storageSource = "localStorage";
+            ensureActiveLineupRow();
+          }
+        } catch {
+          state.activeMode = BOARD_MODES.TIER;
+          state.activeRole = "Tất cả";
+          state.activePosition = "Top";
+          state.activeLineupRowId = "";
+          state.assignmentsByPosition = createEmptyAssignmentsByPosition();
+          state.lineupRows = createDefaultLineupRows();
+          state.customInsights = createEmptyCustomInsights();
+          state.storageSource = "none";
+          ensureActiveLineupRow();
+        }
+      }
+
+      async function chooseJsonFile() {
+        if (!window.showSaveFilePicker) {
+          alert("Trình duyệt này không hỗ trợ chọn file JSON.");
+          return;
+        }
+
+        const handle = await window.showSaveFilePicker({
+          suggestedName: JSON_FILE_NAME,
+          types: [
+            {
+              description: "JSON file",
+              accept: {
+                "application/json": [".json"],
+              },
+            },
+          ],
+        });
+
+        state.fileHandle = handle;
+        await saveFileHandle(handle);
+        state.storageSource = "json";
+        renderAll();
+        statusLine.textContent = `Đã chọn ${JSON_FILE_NAME}. Bấm Lưu để ghi thay đổi vào file.`;
+      }
+
+      async function saveToJsonFile() {
+        if (!state.fileHandle) {
+          await chooseJsonFile();
+        }
+
+        if (!state.fileHandle) {
+          return;
+        }
+
+        const nextState = {
+          activeMode: state.activeMode,
+          activeRole: state.activeRole,
+          activePosition: state.activePosition,
+          activeLineupRowId: state.activeLineupRowId,
+          assignmentsByPosition: state.assignmentsByPosition,
+          lineupRows: state.lineupRows,
+          customInsights: state.customInsights,
+        };
+
+        const text = JSON.stringify(nextState, null, 2);
+        const writable = await state.fileHandle.createWritable({
+          keepExistingData: false,
+        });
+
+        try {
+          await writable.write(text);
+          await writable.truncate(new Blob([text]).size);
+        } finally {
+          await writable.close();
+        }
+
+        await saveFileHandle(state.fileHandle);
+        state.storageSource = "json";
+        statusLine.textContent = `Đã lưu dữ liệu tier/đội hình vào ${JSON_FILE_NAME}.`;
+      }
+
+      async function loadHeroes() {
+        try {
+          const response = await fetch("./heroes.json", { cache: "no-store" });
+
+          if (!response.ok) {
+            throw new Error("Không tìm thấy heroes.json");
+          }
+
+          const data = await response.json();
+          const normalized = normalizeHeroData(data);
+
+          if (normalized.length === 0) {
+            throw new Error("heroes.json không có dữ liệu hợp lệ");
+          }
+
+          state.heroes = normalized;
+          statusLine.textContent =
+            state.storageSource === "json"
+              ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu đã khôi phục từ file JSON.`
+              : state.storageSource === "localStorage"
+                ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu cũ đã nạp tạm thời; hãy chọn/tạo file JSON để lưu lâu dài.`
+                : `Đã tải ${state.heroes.length} tướng từ heroes.json. Chưa có file JSON nào được chọn.`;
+        } catch (error) {
+          state.heroes = SAMPLE_HEROES;
+          statusLine.textContent =
+            state.storageSource === "json"
+              ? "Chưa đọc được heroes.json, đang dùng dữ liệu mẫu. Dữ liệu tier/đội hình vẫn lấy từ file JSON."
+              : "Chưa đọc được heroes.json, đang dùng dữ liệu mẫu. Hãy đặt heroes.json cùng thư mục với index.html và chạy bằng Live Server.";
+        }
+      }
+
+      function getRoles() {
+        const roleSet = new Set();
+
+        state.heroes.forEach((hero) => {
+          hero.roles.forEach((role) => roleSet.add(role));
+        });
+
+        const preferredOrder = POSITION_ORDER;
+        const sortedRoles = [...roleSet].sort((a, b) => {
+          const aIndex = preferredOrder.indexOf(a);
+          const bIndex = preferredOrder.indexOf(b);
+
+          if (aIndex === -1 && bIndex === -1) return a.localeCompare(b, "vi");
+          if (aIndex === -1) return 1;
+          if (bIndex === -1) return -1;
+          return aIndex - bIndex;
+        });
+
+        return ["Tất cả", ...sortedRoles];
+      }
+
+      function getPositions() {
+        return [...FORMATION_POSITIONS];
+      }
+
+      function getHero(name) {
+        return state.heroes.find((hero) => hero.name === name);
+      }
+
+      function heroMatchesActiveRole(hero) {
+        return (
+          state.activeRole === "Tất cả" || hero.roles.includes(state.activeRole)
+        );
+      }
+
+      function getCurrentBoardAssignments() {
+        if (!state.assignmentsByPosition[state.activePosition]) {
+          state.assignmentsByPosition[state.activePosition] = {};
+        }
+
+        return state.assignmentsByPosition[state.activePosition];
+      }
+
+      function ensureActiveLineupRow() {
+        if (!Array.isArray(state.lineupRows)) {
+          state.lineupRows = createDefaultLineupRows();
+        }
+
+        if (state.lineupRows.length === 0) {
+          state.lineupRows = createDefaultLineupRows();
+        }
+
+        const exists = state.lineupRows.some(
+          (row) => row.id === state.activeLineupRowId,
+        );
+
+        if (!exists) {
+          state.activeLineupRowId = state.lineupRows[0].id;
+        }
+
+        if (state.sidebar.type === "lineup") {
+          const sidebarRowExists = state.lineupRows.some(
+            (row) => row.id === state.sidebar.lineupRowId,
+          );
+          if (!sidebarRowExists) {
+            state.sidebar.lineupRowId = state.activeLineupRowId;
+          }
+        }
+      }
+
+      function getLineupRowById(rowId) {
+        ensureActiveLineupRow();
+        return state.lineupRows.find((row) => row.id === rowId) || null;
+      }
+
+      function getActiveLineupRow() {
+        ensureActiveLineupRow();
+        return getLineupRowById(state.activeLineupRowId);
+      }
+
+      function addLineupRow() {
+        ensureActiveLineupRow();
+        const nextNumber = state.lineupRows.length + 1;
+        const row = createLineupRow(`${LINEUP_LABEL_PREFIX} ${nextNumber}`);
+        state.lineupRows.push(row);
+        state.activeLineupRowId = row.id;
+        if (state.sidebar.type === "lineup") {
+          state.sidebar.lineupRowId = row.id;
+        }
+      }
+
+      function removeLineupRow(rowId) {
+        ensureActiveLineupRow();
+        const nextRows = state.lineupRows.filter((row) => row.id !== rowId);
+
+        if (nextRows.length === 0) {
+          state.lineupRows = createDefaultLineupRows();
+        } else {
+          state.lineupRows = nextRows;
+        }
+
+        delete state.customInsights.lineups[rowId];
+        ensureActiveLineupRow();
+      }
+
+      function updateLineupRowLabel(rowId, label) {
+        const row = getLineupRowById(rowId);
+        if (!row) return;
+        row.label = String(label || "").trim();
+      }
+
+      function getLineupSlot(rowId, position) {
+        const row = getLineupRowById(rowId);
+        if (!row) return [];
+
+        if (!row.slots || typeof row.slots !== "object") {
+          row.slots = createLineupSlots();
+        }
+
+        if (!Array.isArray(row.slots[position])) {
+          row.slots[position] = [];
+        }
+
+        return row.slots[position];
+      }
+
+      function removeHeroFromLineupSlot(heroName, origin) {
+        if (!origin || !origin.rowId || !origin.position) {
+          return;
+        }
+
+        const slot = getLineupSlot(origin.rowId, origin.position);
+        const targetIndex = slot.indexOf(heroName);
+        if (targetIndex >= 0) {
+          slot.splice(targetIndex, 1);
+        }
+      }
+
+      function addHeroToLineupSlot(heroName, rowId, position) {
+        const slot = getLineupSlot(rowId, position);
+        if (!slot.includes(heroName)) {
+          slot.push(heroName);
+        }
+      }
+
+      function getLineupHeroesInRow(rowId) {
+        const collected = [];
+        FORMATION_POSITIONS.forEach((position) => {
+          const slot = getLineupSlot(rowId, position);
+          slot.forEach((heroName) => {
+            if (!collected.includes(heroName)) {
+              collected.push(heroName);
+            }
+          });
+        });
+        return collected;
+      }
+
+      function getHeroPrimaryPosition(hero) {
+        if (!hero) return "Top";
+        const valid = hero.roles.find((role) =>
+          FORMATION_POSITIONS.includes(role),
+        );
+        return valid || "Top";
+      }
+
+      function getOrCreateHeroCustomInsights(heroName) {
+        if (!state.customInsights.heroes[heroName]) {
+          state.customInsights.heroes[heroName] = {
+            seeded: false,
+            synergy: [],
+            counters: [],
+          };
+        }
+
+        return state.customInsights.heroes[heroName];
+      }
+
+      function ensureHeroCustomInsights(heroName) {
+        const entry = getOrCreateHeroCustomInsights(heroName);
+        if (!entry.seeded) {
+          const defaults = composeHeroSuggestions(heroName);
+          entry.synergy = [...defaults.synergy];
+          entry.counters = [...defaults.counters];
+          entry.seeded = true;
+        }
+
+        return entry;
+      }
+
+      function getOrCreateLineupCustomInsights(rowId) {
+        ensureActiveLineupRow();
+        const safeRowId = rowId || state.activeLineupRowId;
+        if (!state.customInsights.lineups[safeRowId]) {
+          state.customInsights.lineups[safeRowId] = {
+            seeded: false,
+            counters: [],
+          };
+        }
+
+        return state.customInsights.lineups[safeRowId];
+      }
+
+      function ensureLineupCustomInsights(rowId) {
+        const safeRowId = rowId || state.activeLineupRowId;
+        const entry = getOrCreateLineupCustomInsights(safeRowId);
+        if (!entry.seeded) {
+          entry.counters = [...composeLineupCounters(safeRowId)];
+          entry.seeded = true;
+        }
+
+        return entry;
+      }
+
+      function removeHeroFromSidebarOrigin(heroName, origin) {
+        if (!origin || origin.kind !== "sidebar") {
+          return;
+        }
+
+        if (origin.contextType === "hero" && origin.heroName) {
+          const entry = getOrCreateHeroCustomInsights(origin.heroName);
+          const field = origin.section === "synergy" ? "synergy" : "counters";
+          entry[field] = entry[field].filter((name) => name !== heroName);
+          entry.seeded = true;
+          return;
+        }
+
+        if (origin.contextType === "lineup" && origin.rowId) {
+          const entry = getOrCreateLineupCustomInsights(origin.rowId);
+          entry.counters = entry.counters.filter((name) => name !== heroName);
+          entry.seeded = true;
+        }
+      }
+
+      function removeHeroBySource(heroName, source, origin) {
+        if (source === "tier") {
+          delete getCurrentBoardAssignments()[heroName];
+          return;
+        }
+
+        if (source === "lineup" && origin) {
+          removeHeroFromLineupSlot(heroName, origin);
+          return;
+        }
+
+        if (source === "sidebar" && origin) {
+          removeHeroFromSidebarOrigin(heroName, origin);
+        }
+      }
+
+      function parseDragPayload(event) {
+        try {
+          return JSON.parse(event.dataTransfer.getData("text/plain") || "{}");
+        } catch {
+          return {};
+        }
+      }
+
+      function placeholderImage(name) {
+        const initials = String(name)
+          .split(/\s+/)
+          .map((part) => part[0])
+          .join("")
+          .slice(0, 2)
+          .toUpperCase();
+
+        const hue =
+          Math.abs(
+            [...String(name)].reduce((sum, ch) => sum + ch.charCodeAt(0), 0),
+          ) % 360;
+
+        const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="hsl(${hue}, 85%, 58%)"/>
+              <stop offset="1" stop-color="hsl(${(hue + 55) % 360}, 72%, 34%)"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="16" fill="url(#g)"/>
+          <circle cx="75" cy="22" r="18" fill="rgba(255,255,255,0.18)"/>
+          <path d="M10 82 C28 55, 42 68, 55 42 C67 18, 83 31, 91 10 L91 100 L10 100 Z" fill="rgba(0,0,0,0.22)"/>
+          <text x="50" y="58" text-anchor="middle" font-family="Arial" font-size="30" font-weight="800" fill="white">${initials}</text>
+        </svg>
+      `;
+
+        return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+      }
+
+      function getHeroImage(hero) {
+        return hero.image || placeholderImage(hero.name);
+      }
+
+      function createHeroCard(name, source = "pool", origin = null) {
+        const hero = getHero(name);
+        if (!hero) return document.createElement("div");
+
+        const card = document.createElement("div");
+        card.className = "hero-card";
+        card.draggable = true;
+        card.dataset.hero = hero.name;
+        card.dataset.source = source;
+        const removableSources = new Set(["tier", "lineup", "sidebar"]);
+        const canRemove = removableSources.has(source);
+        if (canRemove) {
+          card.classList.add("can-remove");
+        }
+
+        const currentAssignments = getCurrentBoardAssignments();
+        if (currentAssignments[hero.name]) {
+          card.classList.add("assigned");
+          card.dataset.tier = currentAssignments[hero.name];
+        }
+
+        const roleLabel = hero.roles[0] || "Khác";
+        card.innerHTML = `
+        <span class="role-badge">${roleLabel}</span>
+        <div class="hero-img-wrap">
+          <img src="${getHeroImage(hero)}" alt="${hero.name}" loading="lazy" />
+        </div>
+        <div class="hero-name">${hero.name}</div>
+      `;
+
+        if (canRemove) {
+          const removeBtn = document.createElement("button");
+          removeBtn.type = "button";
+          removeBtn.className = "hero-remove-btn";
+          removeBtn.setAttribute("aria-label", `Xoá ${hero.name}`);
+          removeBtn.textContent = "×";
+          removeBtn.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            removeHeroBySource(hero.name, source, origin);
+            renderAll();
+          });
+          card.appendChild(removeBtn);
+        }
+
+        const img = card.querySelector("img");
+        img.onerror = () => {
+          img.onerror = null;
+          img.src = placeholderImage(hero.name);
+        };
+
+        let dragged = false;
+
+        card.addEventListener("dragstart", (event) => {
+          dragged = true;
+          const payload = {
+            hero: hero.name,
+            source,
+          };
+
+          if (origin && source !== "pool") {
+            payload.origin = origin;
+          }
+
+          event.dataTransfer.setData("text/plain", JSON.stringify(payload));
+          event.dataTransfer.effectAllowed = "copyMove";
+          card.classList.add("dragging");
+        });
+
+        card.addEventListener("dragend", () => {
+          card.classList.remove("dragging");
+          setTimeout(() => {
+            dragged = false;
+          }, 0);
+        });
+
+        card.addEventListener("click", (event) => {
+          if (dragged) return;
+          event.stopPropagation();
+          openHeroSidebar(hero.name);
+        });
+
+        return card;
+      }
+
+      function emptyText(text) {
+        const div = document.createElement("div");
+        div.className = "empty-text";
+        div.textContent = text;
+        return div;
+      }
+
+      function renderViewTabs() {
+        viewTabs.innerHTML = "";
+        const options = [
+          {
+            id: BOARD_MODES.TIER,
+            label: "Tier List",
+          },
+          {
+            id: BOARD_MODES.LINEUP,
+            label: "Đội hình",
+          },
+        ];
+
+        options.forEach((option) => {
+          const button = document.createElement("button");
+          button.className =
+            state.activeMode === option.id ? "role-tab active" : "role-tab";
+          button.textContent = option.label;
+          button.addEventListener("click", () => {
+            state.activeMode = option.id;
+            renderAll();
+          });
+          viewTabs.appendChild(button);
+        });
+      }
+
+      function renderPositionTabs() {
+        const positions = getPositions();
+        positionTabs.innerHTML = "";
+
+        if (!positions.includes(state.activePosition)) {
+          state.activePosition = positions[0] || "Top";
+        }
+
+        positions.forEach((position) => {
+          const count = state.heroes.filter((hero) =>
+            hero.roles.includes(position),
+          ).length;
+
+          const button = document.createElement("button");
+          button.className = `role-tab ${state.activePosition === position ? "active" : ""}`;
+          button.innerHTML = `${position} <span class="role-count">${count}</span>`;
+          button.addEventListener("click", () => {
+            state.activePosition = position;
+            renderAll();
+          });
+          positionTabs.appendChild(button);
+        });
+      }
+
+      function renderRoleTabs() {
+        const roles = getRoles();
+        roleTabs.innerHTML = "";
+
+        if (!roles.includes(state.activeRole)) {
+          state.activeRole = "Tất cả";
+        }
+
+        roles.forEach((role) => {
+          const count =
+            role === "Tất cả"
+              ? state.heroes.length
+              : state.heroes.filter((hero) => hero.roles.includes(role)).length;
+
+          const button = document.createElement("button");
+          button.className = `role-tab ${state.activeRole === role ? "active" : ""}`;
+          button.innerHTML = `${role} <span class="role-count">${count}</span>`;
+          button.addEventListener("click", () => {
+            state.activeRole = role;
+            renderAll();
+          });
+          roleTabs.appendChild(button);
+        });
+      }
+
+      function setupTierDropZone(zone) {
+        zone.addEventListener("dragover", (event) => {
+          event.preventDefault();
+          zone.classList.add("drag-over");
+        });
+
+        zone.addEventListener("dragleave", () => {
+          zone.classList.remove("drag-over");
+        });
+
+        zone.addEventListener("drop", (event) => {
+          event.preventDefault();
+          zone.classList.remove("drag-over");
+
+          const data = parseDragPayload(event);
+          if (!data.hero) return;
+
+          if (data.source === "lineup" && data.origin) {
+            removeHeroFromLineupSlot(data.hero, data.origin);
+          }
+
+          getCurrentBoardAssignments()[data.hero] = zone.dataset.tier;
+          renderAll();
+        });
+      }
+
+      function setupLineupDropZone(zone) {
+        zone.addEventListener("dragover", (event) => {
+          event.preventDefault();
+          zone.classList.add("drag-over");
+        });
+
+        zone.addEventListener("dragleave", () => {
+          zone.classList.remove("drag-over");
+        });
+
+        zone.addEventListener("drop", (event) => {
+          event.preventDefault();
+          zone.classList.remove("drag-over");
+
+          const data = parseDragPayload(event);
+          if (!data.hero) return;
+
+          const rowId = zone.dataset.rowId;
+          const position = zone.dataset.position;
+
+          if (data.source === "lineup" && data.origin) {
+            const sameTarget =
+              data.origin.rowId === rowId && data.origin.position === position;
+            if (sameTarget) return;
+            removeHeroFromLineupSlot(data.hero, data.origin);
+          }
+
+          addHeroToLineupSlot(data.hero, rowId, position);
+          state.activeLineupRowId = rowId;
+          if (state.sidebar.type === "lineup") {
+            state.sidebar.lineupRowId = rowId;
+          }
+          renderAll();
+        });
+      }
+
+      function renderTierBoard() {
+        tierBoard.innerHTML = "";
+        const currentAssignments = getCurrentBoardAssignments();
+
+        tiers.forEach((tier) => {
+          const row = document.createElement("div");
+          row.className = "tier-row";
+          row.innerHTML = `
+          <div class="tier-label tier-${tier}">${tier}</div>
+          <div class="drop-zone" data-tier="${tier}"></div>
+        `;
+
+          const zone = row.querySelector(".drop-zone");
+          setupTierDropZone(zone);
+
+          const assignedHeroes = state.heroes
+            .filter((hero) => currentAssignments[hero.name] === tier)
+            .map((hero) => hero.name);
+
+          if (assignedHeroes.length === 0) {
+            zone.appendChild(emptyText("Thả tướng vào tier này"));
+          } else {
+            assignedHeroes.forEach((heroName) => {
+              zone.appendChild(createHeroCard(heroName, "tier"));
+            });
+          }
+
+          tierBoard.appendChild(row);
+        });
+      }
+
+      function renderLineupBoard() {
+        ensureActiveLineupRow();
+        formationBoard.innerHTML = "";
+
+        const actions = document.createElement("div");
+        actions.className = "lineup-actions";
+        const addButton = document.createElement("button");
+        addButton.type = "button";
+        addButton.className = "lineup-add-btn";
+        addButton.textContent = "+ Thêm đội hình";
+        addButton.addEventListener("click", () => {
+          addLineupRow();
+          renderAll();
+        });
+        actions.appendChild(addButton);
+        formationBoard.appendChild(actions);
+
+        const table = document.createElement("table");
+        table.className = "formation-table";
+
+        const head = document.createElement("thead");
+        head.innerHTML = `
+          <tr class="formation-head">
+            <th>Nhãn</th>
+            ${FORMATION_POSITIONS.map((position) => `<th>${position}</th>`).join("")}
+          </tr>
+        `;
+        table.appendChild(head);
+
+        const body = document.createElement("tbody");
+
+        state.lineupRows.forEach((lineupRow, rowIndex) => {
+          const tr = document.createElement("tr");
+          tr.className = `formation-row ${state.activeLineupRowId === lineupRow.id ? "active" : ""}`;
+          tr.dataset.rowId = lineupRow.id;
+          tr.addEventListener("click", () => {
+            openLineupSidebar(lineupRow.id);
+          });
+
+          const labelCell = document.createElement("td");
+          labelCell.className = "lineup-label-cell";
+          const labelWrap = document.createElement("div");
+          labelWrap.className = "lineup-label-wrap";
+
+          const labelInput = document.createElement("input");
+          labelInput.type = "text";
+          labelInput.className = "lineup-label-input";
+          labelInput.placeholder = `${LINEUP_LABEL_PREFIX} ${rowIndex + 1}`;
+          labelInput.value = lineupRow.label || "";
+          labelInput.addEventListener("click", (event) => {
+            event.stopPropagation();
+          });
+          labelInput.addEventListener("input", () => {
+            updateLineupRowLabel(lineupRow.id, labelInput.value);
+            saveCurrentState().catch(() => {});
+          });
+          labelInput.addEventListener("blur", () => {
+            updateLineupRowLabel(lineupRow.id, labelInput.value);
+            renderAll();
+          });
+
+          const deleteButton = document.createElement("button");
+          deleteButton.type = "button";
+          deleteButton.className = "lineup-delete-btn";
+          deleteButton.textContent = "×";
+          deleteButton.setAttribute("aria-label", "Xoá đội hình");
+          deleteButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            removeLineupRow(lineupRow.id);
+            renderAll();
+          });
+
+          labelWrap.appendChild(labelInput);
+          labelWrap.appendChild(deleteButton);
+          labelCell.appendChild(labelWrap);
+          tr.appendChild(labelCell);
+
+          FORMATION_POSITIONS.forEach((position) => {
+            const cell = document.createElement("td");
+            cell.className = "formation-slot-cell";
+
+            const slot = document.createElement("div");
+            slot.className = "lineup-drop-zone drop-zone";
+            slot.dataset.rowId = lineupRow.id;
+            slot.dataset.position = position;
+            setupLineupDropZone(slot);
+
+            const heroesInSlot = getLineupSlot(lineupRow.id, position);
+            if (heroesInSlot.length === 0) {
+              slot.appendChild(emptyText("Thả tướng"));
+            } else {
+              heroesInSlot.forEach((heroName) => {
+                slot.appendChild(
+                  createHeroCard(heroName, "lineup", {
+                    rowId: lineupRow.id,
+                    position,
+                  }),
+                );
+              });
+            }
+
+            cell.appendChild(slot);
+            tr.appendChild(cell);
+          });
+
+          body.appendChild(tr);
+        });
+
+        table.appendChild(body);
+        formationBoard.appendChild(table);
+      }
+
+      function renderHeroPool() {
+        const keyword = normalizeName(searchInput.value.trim());
+        heroPool.innerHTML = "";
+
+        const filteredHeroes = state.heroes
+          .filter(heroMatchesActiveRole)
+          .filter((hero) => normalizeName(hero.name).includes(keyword));
+
+        poolTitle.textContent =
+          state.activeRole === "Tất cả"
+            ? "Danh sách tướng"
+            : `Danh sách tướng - ${state.activeRole}`;
+
+        if (filteredHeroes.length === 0) {
+          heroPool.appendChild(emptyText("Không tìm thấy tướng phù hợp."));
+          return;
+        }
+
+        filteredHeroes.forEach((hero) => {
+          heroPool.appendChild(createHeroCard(hero.name, "pool"));
+        });
+      }
+
+      function getRankedHeroesFromPosition(
+        position,
+        options = {
+          minimumTierScore: 1,
+          exclude: new Set(),
+          limit: 6,
+        },
+      ) {
+        const board = state.assignmentsByPosition[position] || {};
+        const entries = Object.entries(board)
+          .filter(([heroName, tier]) => {
+            if (options.exclude && options.exclude.has(heroName)) return false;
+            return (TIER_SCORE[tier] || 0) >= options.minimumTierScore;
+          })
+          .sort((a, b) => {
+            const scoreGap = (TIER_SCORE[b[1]] || 0) - (TIER_SCORE[a[1]] || 0);
+            if (scoreGap !== 0) return scoreGap;
+            return a[0].localeCompare(b[0], "vi");
+          })
+          .map(([heroName]) => heroName);
+
+        if (entries.length >= options.limit) {
+          return entries.slice(0, options.limit);
+        }
+
+        const fallback = state.heroes
+          .filter((hero) => hero.roles.includes(position))
+          .map((hero) => hero.name)
+          .filter(
+            (heroName) =>
+              !entries.includes(heroName) &&
+              (!options.exclude || !options.exclude.has(heroName)),
+          )
+          .slice(0, options.limit - entries.length);
+
+        return [...entries, ...fallback];
+      }
+
+      function composeHeroSuggestions(heroName) {
+        const hero = getHero(heroName);
+        if (!hero) {
+          return {
+            synergy: [],
+            counters: [],
+          };
+        }
+
+        const primaryPosition = getHeroPrimaryPosition(hero);
+        const exclude = new Set([heroName]);
+
+        const synergyPositions = [
+          primaryPosition,
+          ...(SYNERGY_POSITION_PRIORITY[primaryPosition] || []),
+        ].filter((position, index, array) => array.indexOf(position) === index);
+
+        const synergy = [];
+        synergyPositions.forEach((position) => {
+          const picks = getRankedHeroesFromPosition(position, {
+            minimumTierScore: 4,
+            exclude,
+            limit: 4,
+          });
+          picks.forEach((pick) => {
+            if (!synergy.includes(pick)) {
+              synergy.push(pick);
+            }
+          });
+        });
+
+        const currentTier =
+          (state.assignmentsByPosition[primaryPosition] || {})[heroName];
+        const minimumCounterScore = currentTier
+          ? Math.min((TIER_SCORE[currentTier] || 3) + 1, 5)
+          : 4;
+
+        const counters = [];
+        const sameLaneCounters = getRankedHeroesFromPosition(primaryPosition, {
+          minimumTierScore: minimumCounterScore,
+          exclude,
+          limit: 6,
+        });
+        sameLaneCounters.forEach((pick) => counters.push(pick));
+
+        (COUNTER_POSITION_PRIORITY[primaryPosition] || []).forEach((position) => {
+          const picks = getRankedHeroesFromPosition(position, {
+            minimumTierScore: 4,
+            exclude,
+            limit: 4,
+          });
+          picks.forEach((pick) => {
+            if (!counters.includes(pick)) {
+              counters.push(pick);
+            }
+          });
+        });
+
+        return {
+          synergy: synergy.slice(0, 12),
+          counters: counters.slice(0, 12),
+        };
+      }
+
+      function composeLineupCounters(rowId) {
+        ensureActiveLineupRow();
+        const safeRowId = rowId || state.activeLineupRowId;
+        const lineupHeroes = getLineupHeroesInRow(safeRowId);
+        const lineupSet = new Set(lineupHeroes);
+        const scored = new Map();
+
+        lineupHeroes.forEach((heroName) => {
+          const counters = composeHeroSuggestions(heroName).counters.slice(0, 5);
+          counters.forEach((counterName, index) => {
+            if (lineupSet.has(counterName)) return;
+            const weight = 6 - index;
+            scored.set(counterName, (scored.get(counterName) || 0) + weight);
+          });
+        });
+
+        if (scored.size === 0) {
+          FORMATION_POSITIONS.forEach((position) => {
+            const picks = getRankedHeroesFromPosition(position, {
+              minimumTierScore: 4,
+              exclude: lineupSet,
+              limit: 3,
+            });
+            picks.forEach((pick, index) => {
+              scored.set(pick, (scored.get(pick) || 0) + (4 - index));
+            });
+          });
+        }
+
+        return [...scored.entries()]
+          .sort((a, b) => {
+            const scoreGap = b[1] - a[1];
+            if (scoreGap !== 0) return scoreGap;
+            return a[0].localeCompare(b[0], "vi");
+          })
+          .map(([heroName]) => heroName)
+          .slice(0, 14);
+      }
+
+      function addHeroToSidebarSection(heroName, section) {
+        if (state.sidebar.type === "hero") {
+          const heroNameContext = state.sidebar.heroName;
+          const entry = ensureHeroCustomInsights(heroNameContext);
+          const field = section === "synergy" ? "synergy" : "counters";
+          if (!entry[field].includes(heroName)) {
+            entry[field].push(heroName);
+          }
+          entry.seeded = true;
+          return;
+        }
+
+        const rowIdContext = state.sidebar.lineupRowId || state.activeLineupRowId;
+        const entry = ensureLineupCustomInsights(rowIdContext);
+        if (!entry.counters.includes(heroName)) {
+          entry.counters.push(heroName);
+        }
+        entry.seeded = true;
+      }
+
+      function buildSidebarOrigin(section) {
+        if (state.sidebar.type === "hero") {
+          return {
+            kind: "sidebar",
+            contextType: "hero",
+            heroName: state.sidebar.heroName,
+            section,
+          };
+        }
+
+        return {
+          kind: "sidebar",
+          contextType: "lineup",
+          rowId: state.sidebar.lineupRowId || state.activeLineupRowId,
+          section: "counter",
+        };
+      }
+
+      function setupSidebarEditZone(container, section) {
+        container.addEventListener("dragover", (event) => {
+          event.preventDefault();
+          container.classList.add("drag-over");
+        });
+
+        container.addEventListener("dragleave", () => {
+          container.classList.remove("drag-over");
+        });
+
+        container.addEventListener("drop", (event) => {
+          event.preventDefault();
+          container.classList.remove("drag-over");
+
+          if (!state.sidebar.open) return;
+          if (state.sidebar.type === "lineup" && section === "synergy") return;
+
+          const data = parseDragPayload(event);
+          if (!data.hero) return;
+
+          if (data.source === "sidebar" && data.origin) {
+            const currentOrigin = buildSidebarOrigin(section);
+            const isSameList =
+              data.origin.kind === "sidebar" &&
+              data.origin.contextType === currentOrigin.contextType &&
+              data.origin.section === currentOrigin.section &&
+              data.origin.heroName === currentOrigin.heroName &&
+              data.origin.rowId === currentOrigin.rowId;
+            if (isSameList) {
+              return;
+            }
+            removeHeroFromSidebarOrigin(data.hero, data.origin);
+          }
+
+          addHeroToSidebarSection(data.hero, section);
+          renderAll();
+        });
+      }
+
+      function renderSidebarGrid(container, names, emptyMessage, section) {
+        container.innerHTML = "";
+
+        const validNames = names.filter((heroName) => getHero(heroName));
+        if (validNames.length === 0) {
+          container.appendChild(emptyText(emptyMessage));
+          return;
+        }
+
+        const origin = buildSidebarOrigin(section);
+        validNames.forEach((heroName) => {
+          container.appendChild(createHeroCard(heroName, "sidebar", origin));
+        });
+      }
+
+      function closeSidebar() {
+        state.sidebar.open = false;
+        renderSidebar();
+      }
+
+      function openHeroSidebar(heroName) {
+        state.sidebar.open = true;
+        state.sidebar.type = "hero";
+        state.sidebar.heroName = heroName;
+        renderSidebar();
+      }
+
+      function openLineupSidebar(rowId) {
+        const targetRow = getLineupRowById(rowId) || getActiveLineupRow();
+        if (!targetRow) return;
+        state.activeLineupRowId = targetRow.id;
+        state.sidebar.open = true;
+        state.sidebar.type = "lineup";
+        state.sidebar.lineupRowId = targetRow.id;
+        renderAll();
+      }
+
+      function renderSidebar() {
+        const isOpen = state.sidebar.open;
+        workspace.classList.toggle("sidebar-open", isOpen);
+        insightSidebar.setAttribute("aria-hidden", String(!isOpen));
+
+        if (!isOpen) {
+          return;
+        }
+
+        if (state.sidebar.type === "hero") {
+          const heroName = state.sidebar.heroName;
+          const insights = ensureHeroCustomInsights(heroName);
+          sidebarTitle.textContent = heroName;
+          sidebarSubtitle.textContent = "Gợi ý tướng phối hợp và tướng khắc chế.";
+          synergySection.classList.remove("hidden");
+          counterSection.classList.remove("hidden");
+          renderSidebarGrid(
+            synergyGrid,
+            insights.synergy,
+            "Chưa có tướng phối hợp phù hợp.",
+            "synergy",
+          );
+          renderSidebarGrid(
+            counterGrid,
+            insights.counters,
+            "Chưa có dữ liệu khắc chế phù hợp.",
+            "counter",
+          );
+          return;
+        }
+
+        const lineupRowId = state.sidebar.lineupRowId || state.activeLineupRowId;
+        const lineupRow = getLineupRowById(lineupRowId);
+        const lineupLabel =
+          lineupRow && lineupRow.label
+            ? lineupRow.label
+            : "Đội hình đang chọn";
+        const insights = ensureLineupCustomInsights(lineupRowId);
+        sidebarTitle.textContent = `Khắc chế ${lineupLabel}`;
+        sidebarSubtitle.textContent =
+          "Danh sách tướng khắc chế tổng hợp từ các tướng đã đặt trong hàng này.";
+        synergySection.classList.add("hidden");
+        counterSection.classList.remove("hidden");
+        renderSidebarGrid(
+          counterGrid,
+          insights.counters,
+          "Hãy thêm tướng vào đội hình để gợi ý khắc chế.",
+          "counter",
+        );
+      }
+
+      function renderModeVisibility() {
+        const isTierMode = state.activeMode === BOARD_MODES.TIER;
+        positionTabs.classList.toggle("hidden", !isTierMode);
+        tierBoard.classList.toggle("hidden", !isTierMode);
+        formationBoard.classList.toggle("hidden", isTierMode);
+
+        if (isTierMode) {
+          resetBtn.textContent = "Reset tier";
+        } else {
+          const activeRow = getActiveLineupRow();
+          const label = activeRow?.label || "đang chọn";
+          resetBtn.textContent = `Reset ${label}`;
+        }
+      }
+
+      function renderAll() {
+        ensureActiveLineupRow();
+        renderViewTabs();
+        renderPositionTabs();
+        renderRoleTabs();
+        renderTierBoard();
+        renderLineupBoard();
+        renderHeroPool();
+        renderModeVisibility();
+        renderSidebar();
+        saveCurrentState().catch(() => {});
+      }
+
+      searchInput.addEventListener("input", renderHeroPool);
+
+      closeSidebarBtn.addEventListener("click", () => {
+        closeSidebar();
+      });
+
+      saveBtn.addEventListener("click", () => {
+        saveToJsonFile().catch((error) => {
+          console.error(error);
+          alert("Không lưu được file JSON.");
+        });
+      });
+
+      resetBtn.addEventListener("click", () => {
+        if (state.activeMode === BOARD_MODES.TIER) {
+          const accepted = confirm(
+            "Bạn có chắc muốn xoá toàn bộ tier của vị trí hiện tại không?",
+          );
+          if (!accepted) return;
+          state.assignmentsByPosition[state.activePosition] = {};
+          renderAll();
+          return;
+        }
+
+        const activeRow = getActiveLineupRow();
+        if (!activeRow) return;
+        const activeLabel = activeRow.label || "đang chọn";
+
+        const accepted = confirm(
+          `Bạn có chắc muốn xoá đội hình ${activeLabel} không?`,
+        );
+        if (!accepted) return;
+
+        activeRow.slots = createLineupSlots();
+        delete state.customInsights.lineups[activeRow.id];
+        renderAll();
+      });
+
+      setupSidebarEditZone(synergyGrid, "synergy");
+      setupSidebarEditZone(counterGrid, "counter");
+      (async () => {
+        await loadSavedState();
+        await loadHeroes();
+        renderAll();
+        if (state.storageSource === "none") {
+          statusLine.textContent =
+            "Hãy bấm 'Lưu' một lần để chọn/tạo file JSON, sau đó bấm Lưu để ghi thay đổi.";
+        }
+      })();
+    </script>
+  </body>
+</html>

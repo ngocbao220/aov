@@ -1,0 +1,642 @@
+[
+  {
+    "name": "Flowborn_AP",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2026/04/IMG-SQR-0150x0150-080149-22.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/flowborn-2/"
+  },
+  {
+    "name": "Flowborn_AD",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2026/04/IMG-SQR-0150x0150-080151-ket-thuc2.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/flowborn/"
+  },
+  {
+    "name": "Dyadia",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2026/01/SeaTalk_IMG_20260119_104427.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/dyadia/"
+  },
+  {
+    "name": "Edras",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2025/10/edrashead-2.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/11596/"
+  },
+  {
+    "name": "Goverra",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2025/07/goverra-11.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/goverra/"
+  },
+  {
+    "name": "Heino",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2025/04/heino-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/heino/"
+  },
+  {
+    "name": "Billow",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2025/01/59900-1-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/billow/"
+  },
+  {
+    "name": "Bolt Baron",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/11/bolt-baron.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/bolt-baron/"
+  },
+  {
+    "name": "Biron",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/10/biron-artwork-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/biron/"
+  },
+  {
+    "name": "Dolia",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/07/15900s.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/dolia/"
+  },
+  {
+    "name": "Charlotte",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/07/20600s.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/charlotte/"
+  },
+  {
+    "name": "Tachi",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/ec0a81792c19067b2fa4c1be12df1f85658d31672d2391-e1718875866325.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/tachi/"
+  },
+  {
+    "name": "Dirak",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/ab0b68ebd2e8df3116d91231ec0e55fc5e16e1f05c8701-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/dirak/"
+  },
+  {
+    "name": "Qi",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/ea8c78314832bcfd0425b344bed537895d568654bae101.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/qi/"
+  },
+  {
+    "name": "Erin",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d283b5fb9c1b8f7d86a8b189e123361765af7b2c5f3dd1-e1718875535623.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/erin/"
+  },
+  {
+    "name": "Ming",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/daecfe589d186ab9025962aa8e625fe3658d53c801b631-e1718875547494.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ming/"
+  },
+  {
+    "name": "Bijan",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/0c8d05c3314999644164ba2ea4fd6ef8658d51ffba5451-e1718875595956.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/bijan/"
+  },
+  {
+    "name": "Bonnie",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/b58d66475d3c6eb1d37ceaeee655c4e3658d4ead4b0db1-e1718875641276.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/bonnie/"
+  },
+  {
+    "name": "Teeri",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/c6062db980cf91da2d656d913894c85c658d4a78609b91.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/teeri/"
+  },
+  {
+    "name": "Yue",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/60c5de0b92bd07274ca5d0d7f327d487658d4ab9a61701.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/yue/"
+  },
+  {
+    "name": "Yan",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/4ab0b3ec9dd49e1534e876bd39d74010658d405697b3c1-e1718875768425.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/yan/"
+  },
+  {
+    "name": "Aya",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/8decfe0a19adf4c0db504a34dedb271e658d3f1133b0a1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/aya/"
+  },
+  {
+    "name": "Aoi",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/f1db425eba8ea88e5d4d8427c1706bcf6100183de1cc11.jpeg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/aoi/"
+  },
+  {
+    "name": "Iggy",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/6ac7db04e9ac98ca09584ce0b326d28260feffae703b91-e1718875984116.jpeg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/iggy/"
+  },
+  {
+    "name": "Bright",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/4afa684bad6a0a9c3bed7199921968de5fc55aa90a4c51.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/bright/"
+  },
+  {
+    "name": "Lorion",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/4566ea9393c80328b2b695f9471fa4e05fc52606951531.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/lorion/"
+  },
+  {
+    "name": "Dextra",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/f6eb117d5a3dbb00aeaba0d20c16090f5fc5245fa1dc41.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/dextra/"
+  },
+  {
+    "name": "Sinestrea",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/7d7d0372a94df56d5a0dd83f2a5980365fbcc44336f9b1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/sinestrea/"
+  },
+  {
+    "name": "Thorne",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/02d261484bcffc9e2df47a9a0e9fa4995fbcbc6f53a441.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/thorne/"
+  },
+  {
+    "name": "Allain",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d0ca908065803d3600f0faa0dd7ac14d5ef1fa85a63c51.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/allain/"
+  },
+  {
+    "name": "Zata",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/de6c9c3fd4c4a6faa9d49124d72d0a145ec66697b312c1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/zata/"
+  },
+  {
+    "name": "Rouie",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d542e67cae782da336fa75eb53fbf4305eb13f172378e1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/rouie/"
+  },
+  {
+    "name": "Laville",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/04a252fe1bade19ca0afc2ce206f5beb5eb1369eb3c031.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/laville/"
+  },
+  {
+    "name": "Paine",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/0be29b0b5ef9fd3fa5fe590c07fa43df5e8adea50874d1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/paine/"
+  },
+  {
+    "name": "Ata",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/206f1bf38f4e3caf5dcf853618e17a1f5e57c057965c71.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ata/"
+  },
+  {
+    "name": "Keera",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/6b478098801f44672591dec43796afee5e452c35c04c01.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/keera/"
+  },
+  {
+    "name": "Ishar",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/1009dcdfe78de2f6bc7fbdaea21cabc05df2198341d451.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ishar/"
+  },
+  {
+    "name": "Eland’orr",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d5592bb2109b1367451f11bb876a58ce5db1778ed43411.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/elandorr/"
+  },
+  {
+    "name": "Krizzix",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/4fdee0dd90690a9ba7e7e868c403be785db6c7467b3281-e1718876843575.png",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/krizzix/"
+  },
+  {
+    "name": "Volkath",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/16727f5198e91db68433cb19b8bacc785d9479be7a7731-e1718876925604.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/volkath/"
+  },
+  {
+    "name": "Celica",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/5c7448ebdafee8605d0006eb3045c0845d6fa763462c11.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/celica/"
+  },
+  {
+    "name": "Zip",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/608c1ed2a2d799a34dab477918c665565d38241072f5e1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/zip/"
+  },
+  {
+    "name": "Enzo",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/829bb771c29c1cc0bd2019cab9e101ec5d149a83802c51.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/enzo/"
+  },
+  {
+    "name": "Yena",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/70ea305ed24716682532486c9625a8315cfe1cf69999f1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/yena/"
+  },
+  {
+    "name": "Errol",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/3d7beab0904b2c5dc6f1962b565bbde35cc136d356ef31.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/errol/"
+  },
+  {
+    "name": "Capheny",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/f3c1c5a6dfdc7610f57568f84b7075d85ca5c237e77991.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/capheny/"
+  },
+  {
+    "name": "Hayate",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d0c33087d442efacbb2b543cee4527c45c8f29a4ceeb81.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/hayate/"
+  },
+  {
+    "name": "D’Arcy",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/c545d29232eefe7a4d455fa68e7a60305c61059833fe21.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/darcy/"
+  },
+  {
+    "name": "Veres",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/c936a8d04e8d9b32b73311fa8ca6535f5c3f06ebd8c741.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/veres/"
+  },
+  {
+    "name": "Florentino",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/62cda115a78344fc4fa5154881c9da255c25f64ee994d1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/florentino/"
+  },
+  {
+    "name": "Sephera",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/dd1d860625744c7456f2b184666458995c132cd3c69611.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/sephera/"
+  },
+  {
+    "name": "Quillen",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/8ecc35d079463abfc3fd50d96e0897cd5bf778de40ce61.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/quillen/"
+  },
+  {
+    "name": "Wiro",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/86f414b37cd13c697508282c15fa05805be3c49c8204f1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/wiro/"
+  },
+  {
+    "name": "Richter",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/774475336079e3d014b6e462e419cba85bd7d95d75a431.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/richter/"
+  },
+  {
+    "name": "Elsu",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/fec52948b2886e191fa03b45047ae6e45bc98f98341211.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/elsu/"
+  },
+  {
+    "name": "Y’bneth",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/8276a829e1e1559b0a57f38ce7e1ac255b98deead3d3e1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ybneth/"
+  },
+  {
+    "name": "Amily",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/7cf166510b07a9996810020bc87d806a5b88ea3110ca91.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/amily/"
+  },
+  {
+    "name": "Annette",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/5f93999a6586945b8d85258d67cee9195ef60dbbd2b5f1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/annette/"
+  },
+  {
+    "name": "Baldum",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d9c34b86f1ad89c132e316672bfcd7f55b6bb975c08761.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/baldum/"
+  },
+  {
+    "name": "Roxie",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/51400-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/roxie/"
+  },
+  {
+    "name": "Marja",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/04335712825428af4e516041ef603a2b5b2b85df83ba91.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/marja/"
+  },
+  {
+    "name": "Rourke",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/f8aa14696ccc1cf02e6d2be8bb0676cc5b191602c0a671.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/rourke/"
+  },
+  {
+    "name": "Arum",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/5951b4834461108d446792cdddb7168b5afeba8707aeb1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/arum/"
+  },
+  {
+    "name": "Wisp",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/71f565c806c353f86bd8f20476f7fdad5aec0b90f23ac1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/wisp/"
+  },
+  {
+    "name": "The Flash",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/efc981c9e4534651441b90a4b4945e055ad9688b0d01a1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/the-flash/"
+  },
+  {
+    "name": "Max",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/301800head_B52.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/max/"
+  },
+  {
+    "name": "Liliana",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/4b3a1b156a571f4c9cf270dabeb637c25aa0b6e347bf71.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/liliana/"
+  },
+  {
+    "name": "Tulen",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/Tulen-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/tulen/"
+  },
+  {
+    "name": "Omen",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/ac091c4f83f63e5fe0d04d1d27d6c7f85a73df52474431.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/omen/"
+  },
+  {
+    "name": "Lindis",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/741faa9b25ae476cda4ade9402d9498f5a617bf35f64e1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/lindis/"
+  },
+  {
+    "name": "TeeMee",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/25e974e952adeaf416ea2bf3c751f7c05a4df884be5501.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/teemee/"
+  },
+  {
+    "name": "Moren",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/SeaTalk_IMG_20260119_104518.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/moren/"
+  },
+  {
+    "name": "Kil’Groth",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/e23f0872bf3974b176e45684ba99dfc75a29fbcfb4b1b1.gif",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/kilgroth/"
+  },
+  {
+    "name": "Xeniel",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/81f4a6d7c3f6bce399233e13f984bfe45a17a07e81e441.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/xeniel/"
+  },
+  {
+    "name": "Wonder Woman",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/e0501e9f37b168c4782c85431ed330e95a0e6d4a3b21f1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/wonder-woman/"
+  },
+  {
+    "name": "Superman",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/bc68101bdb00f4729a25fa5d94ab04d95a02b80264fa21.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/superman/"
+  },
+  {
+    "name": "Tel’Annas",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/cc9c2ce79150240646c6ae335f7184b859e965ee68f1b1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/telannas/"
+  },
+  {
+    "name": "Astrid",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/15b20fb97ed730bbcffba74eec32be4659e02338a0d1d1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/astrid/"
+  },
+  {
+    "name": "Ryoma",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d6387bf2921a4e035684e94bdb92b66859d9beed6992f1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ryoma/"
+  },
+  {
+    "name": "Stuart",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/adbf6c46a0a33999cf187726ec876538658d3d2999faf1-e1718878680568.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/stuart/"
+  },
+  {
+    "name": "Arduin",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d2fbd3a426cf020c1e2e6ad564e50e8c59bb7ee41553e1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/arduin/"
+  },
+  {
+    "name": "Zill",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/256b32f0089b83919788d8a4d0cf88cc59966ed3777eb1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/zill/"
+  },
+  {
+    "name": "Murad",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/e3db6ff94f1becebd8f742e611ed285f5983e6644743f1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/murad/"
+  },
+  {
+    "name": "Ignis",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/93ef18ffc1f43ef4966ef996bbf1aca65970de687d53c1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ignis/"
+  },
+  {
+    "name": "Zuka",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/ba9f847a4e2c11b8bb91aeb40dacb9865c4938a690e2a1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/zuka/"
+  },
+  {
+    "name": "Airi",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/04999ff87145b9005694ffd78e1530a660017059a8fc11.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/airi/"
+  },
+  {
+    "name": "Kaine",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/d10565d17ca5048e7f74228346a857ab658d3bf8532d31.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/kaine/"
+  },
+  {
+    "name": "Lauriel",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/ef13b29ffd78bd266a4a076030458fa35d6f9976e81391.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/lauriel/"
+  },
+  {
+    "name": "Raz",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/c5cdd906de9c6f1e2a9f349a0c8a64ad591e6990c21261.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/raz/"
+  },
+  {
+    "name": "Skud",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/33ff4bfdda333cb5b7af2f2cbb4256a95ee5e258a8bdc1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/skud/"
+  },
+  {
+    "name": "Preyta",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/90b107838232d5d8db37eb34f4fa5f70590bf518910481.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/preyta/"
+  },
+  {
+    "name": "Ilumia",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/36f894796b86becd37dd6a8ad804a7bd5ef5ba2620e391.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ilumia/"
+  },
+  {
+    "name": "Slimz",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/8bc9ebe62988795fa197dc974dd53dad58f97ed3c7ca01.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/slimz/"
+  },
+  {
+    "name": "Arthur",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/06/Honeyview_Arthur_111-e1718875297358.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/arthur/"
+  },
+  {
+    "name": "Kriknak",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/96415e6f9da45b94a0590e3a08028c8958e7138eec04c1-1.png",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/kriknak/"
+  },
+  {
+    "name": "Ngộ Không",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/f2a0aca22638c3fe5a63bac7e9632bfc5e45321b073731.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ngo-khong/"
+  },
+  {
+    "name": "Maloch",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/55b9bf4fb03f6003cfd70c03f75075b25c0def909b2161.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/maloch/"
+  },
+  {
+    "name": "Helen",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/c93a06dd5962e709f155a42a5d8f4a38658d379314e4c1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/helen/"
+  },
+  {
+    "name": "Jinna",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/ce4b4b6a33ca7acd57eb98fc733ca95b5b3459d25cca51.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/jinna/"
+  },
+  {
+    "name": "Cresht",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/795198870c5e6cfb68023c3fd65eb3bd5c49387676fe21.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/cresht/"
+  },
+  {
+    "name": "Natalya",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/8f90ee32d1d033379b0062f5388370045eccc50b1e13c1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/natalya/"
+  },
+  {
+    "name": "Lumburr",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/2507c386596491babf4749a06c4444fc5e7dedcba4f9a1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/lumburr/"
+  },
+  {
+    "name": "Fennik",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/99ed6c82e2b81364cd83f9af4f6f8c195860e29cc74741.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/fennik/"
+  },
+  {
+    "name": "Aleister",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/aleister-00-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/aleister/"
+  },
+  {
+    "name": "Grakk",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/b97aa4b462e0760bfd23530126d6f84a58535af7e39321.png",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/grakk/"
+  },
+  {
+    "name": "Nakroth",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/50a88477e44151ee8ef4cfb354c22fdc5ec64ff1761fb1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/nakroth/"
+  },
+  {
+    "name": "Taara",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/f277ef736ed11c5cafa8c9a03624d15d5e4531fb6c0721.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/taara/"
+  },
+  {
+    "name": "Toro",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/b7b9e1d6feade741ed789349815ddabc5ef592311b28c1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/toro/"
+  },
+  {
+    "name": "Yorn",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/212b5120d63099d26da82b8ff1ed11875c49389add4971.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/yorn/"
+  },
+  {
+    "name": "Gildur",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/10800_B40-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/gildur/"
+  },
+  {
+    "name": "Alice",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/9b84b7e2b3f71361cc8d0178afb6696e58462fa5aeb001.png",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/alice/"
+  },
+  {
+    "name": "Azzen’Ka",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2025/10/azzenka-icon.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/azzenka/"
+  },
+  {
+    "name": "Ormarr",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/25b4f6bda1363a60445f8ab1c32449d25ec27a5a2bfd71.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/ormarr/"
+  },
+  {
+    "name": "Butterfly",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/594f025c153d363cb992cd9d6f77d3905f0ed5819ffd61.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/butterfly/"
+  },
+  {
+    "name": "Violet",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/ed92932b8d6258aec8ac2cf8fbe571675d2564bb2c84e1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/violet/"
+  },
+  {
+    "name": "Chaugnar",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/113_120.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/chaugnar/"
+  },
+  {
+    "name": "Điêu Thuyền",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/3168dfb2fc31f95f3a735fccc752acfa5d2564561eadc1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/dieu-thuyen/"
+  },
+  {
+    "name": "Zephys",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/zephys-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/zephys/"
+  },
+  {
+    "name": "Kahlii",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/cc7a74bc6e29ff8a5eb020d8aac8701f583ff29d174cf1.png",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/kahlii/"
+  },
+  {
+    "name": "Omega",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/1e85e21c964a18bba0550510c4ec18995fbcbaf77ba161.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/omega/"
+  },
+  {
+    "name": "Triệu Vân",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/6ee0ca6c7839effd7b244bbe29f50a9e5d256414acc441.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/trieu-van/"
+  },
+  {
+    "name": "Mganga",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/956abd3fa2d1e8ac9dd80970323d22f45d25634f558b71.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/mganga/"
+  },
+  {
+    "name": "Krixi",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/3fa6fb1c1695570e79df259229e7a6c9583ff18becc9f1.png",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/krixi/"
+  },
+  {
+    "name": "Mina",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/63671026c0e03766c31176d07b56c364583ff15c728d21.png",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/mina/"
+  },
+  {
+    "name": "Lữ Bố",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/01636074d1a9826c4db917dae38a7de25d2562df293d91.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/lu-bo/"
+  },
+  {
+    "name": "Veera",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/82a7e1d31f6b20d3faa502e1a215b76c6595119091e7a2-e1718879982854.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/veera/"
+  },
+  {
+    "name": "Thane",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/6b8c21ee957b5e2146d14aba6d4ac69e583ff08e141932.png",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/thane/"
+  },
+  {
+    "name": "Valhein",
+    "image": "https://lienquan.garena.vn/wp-content/uploads/2024/05/83d9de6ce9963f9ea406db2edd81707f5ee04e755f2a71-1.jpg",
+    "detail_url": "https://lienquan.garena.vn/hoc-vien/tuong-skin/d/valhein/"
+  }
+]

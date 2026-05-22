@@ -1,0 +1,288 @@
+{
+  "activeMode": "tier",
+  "activeRole": "Tất cả",
+  "activePosition": "Jungle",
+  "activeLineupRowId": "2c7cc3f3-574c-4e6c-b9ef-3b495171d20b",
+  "assignmentsByPosition": {
+    "Top": {
+      "Biron": "B",
+      "Omen": "C",
+      "Richter": "C",
+      "Taara": "C",
+      "Ryoma": "S",
+      "Bolt Baron": "A",
+      "Airi": "B",
+      "Marja": "S",
+      "Qi": "A",
+      "Florentino": "B",
+      "Skud": "B",
+      "Volkath": "C",
+      "Murad": "A",
+      "Arthur": "B",
+      "Maloch": "D",
+      "Kil’Groth": "D",
+      "Veres": "D",
+      "Errol": "D",
+      "Ngộ Không": "D",
+      "Mina": "C",
+      "Toro": "C"
+    },
+    "Mid": {
+      "Lorion": "S",
+      "Zata": "S",
+      "Flowborn_AP": "A",
+      "Mganga": "D",
+      "Tulen": "D",
+      "Heino": "D",
+      "Annette": "C",
+      "Krixi": "C",
+      "Gildur": "A",
+      "Ignis": "B",
+      "Iggy": "B",
+      "Rouie": "S",
+      "Jinna": "B",
+      "Aya": "B",
+      "Azzen’Ka": "C",
+      "Liliana": "B"
+    },
+    "Jungle": {
+      "Billow": "A",
+      "Sinestrea": "S",
+      "Zuka": "B",
+      "Nakroth": "B",
+      "Zephys": "A",
+      "Quillen": "B",
+      "Eland’orr": "S",
+      "Keera": "A",
+      "Tachi": "B",
+      "Astrid": "A",
+      "Max": "D",
+      "Wonder Woman": "C",
+      "Yan": "C",
+      "Volkath": "C",
+      "Errol": "C",
+      "Ryoma": "B",
+      "Rourke": "D"
+    },
+    "AD": {
+      "Flowborn_AD": "S",
+      "Wisp": "A",
+      "Hayate": "S",
+      "Violet": "B",
+      "Fennik": "B",
+      "Moren": "B",
+      "Capheny": "B",
+      "Thorne": "D",
+      "Valhein": "C",
+      "Slimz": "D",
+      "Laville": "D",
+      "Stuart": "B"
+    },
+    "SP": {
+      "Cresht": "D",
+      "Chaugnar": "D",
+      "Wiro": "C",
+      "Y’bneth": "S",
+      "Dyadia": "A",
+      "Dolia": "D",
+      "Krizzix": "B",
+      "Enzo": "B",
+      "TeeMee": "A",
+      "Thane": "A",
+      "Arduin": "C",
+      "Roxie": "C",
+      "Baldum": "C",
+      "Mina": "B",
+      "Toro": "A"
+    },
+    "Khác": {}
+  },
+  "lineupRows": [
+    {
+      "id": "2c7cc3f3-574c-4e6c-b9ef-3b495171d20b",
+      "label": "S",
+      "slots": {
+        "Top": [],
+        "Mid": [],
+        "Jungle": [],
+        "AD": [],
+        "SP": []
+      }
+    },
+    {
+      "id": "ec944912-70ac-4a55-b77c-5abed1efb18e",
+      "label": "A",
+      "slots": {
+        "Top": [],
+        "Mid": [],
+        "Jungle": [],
+        "AD": [],
+        "SP": []
+      }
+    },
+    {
+      "id": "7e5c0557-4ba6-4c75-a0f1-2050331b6ae3",
+      "label": "B",
+      "slots": {
+        "Top": [],
+        "Mid": [],
+        "Jungle": [],
+        "AD": [],
+        "SP": []
+      }
+    },
+    {
+      "id": "7ee79780-ab20-413b-ae92-74f0856b200d",
+      "label": "C",
+      "slots": {
+        "Top": [],
+        "Mid": [],
+        "Jungle": [],
+        "AD": [],
+        "SP": []
+      }
+    },
+    {
+      "id": "3ebe7cb6-6253-45b6-85bb-9ad2e21799b0",
+      "label": "D",
+      "slots": {
+        "Top": [],
+        "Mid": [],
+        "Jungle": [],
+        "AD": [],
+        "SP": []
+      }
+    }
+  ],
+  "customInsights": {
+    "heroes": {
+      "Max": {
+        "seeded": true,
+        "synergy": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Eland’orr",
+          "Sinestrea",
+          "Astrid",
+          "Billow",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Sinestrea": {
+        "seeded": true,
+        "synergy": [
+          "Qi",
+          "Murad",
+          "Krizzix",
+          "Mina",
+          "Enzo"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Qi",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Ryoma": {
+        "seeded": true,
+        "synergy": [],
+        "counters": [
+          "Marja",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Marja": {
+        "seeded": true,
+        "synergy": [
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi",
+          "Eland’orr",
+          "Sinestrea",
+          "Astrid",
+          "Billow",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ],
+        "counters": [
+          "Ryoma",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Eland’orr": {
+        "seeded": true,
+        "synergy": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Sinestrea",
+          "Astrid",
+          "Billow",
+          "Keera",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      }
+    },
+    "lineups": {}
+  }
+}
