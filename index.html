@@ -675,6 +675,7 @@
         <button id="saveBtn">Lưu</button>
         <button id="exportBtn">Xuất JSON</button>
         <button id="importBtn">Nhập JSON</button>
+        <button id="reloadRepoBtn">Nạp lại từ repo</button>
         <input
           id="importJsonInput"
           class="hidden"
@@ -1038,6 +1039,7 @@
       const saveBtn = document.getElementById("saveBtn");
       const exportBtn = document.getElementById("exportBtn");
       const importBtn = document.getElementById("importBtn");
+      const reloadRepoBtn = document.getElementById("reloadRepoBtn");
       const importJsonInput = document.getElementById("importJsonInput");
       const statusLine = document.getElementById("statusLine");
       const poolTitle = document.getElementById("poolTitle");
@@ -1594,6 +1596,25 @@
         ensureActiveLineupRow();
       }
 
+      async function applyStateFromRepoJson() {
+        const response = await fetch(`./${JSON_FILE_NAME}`, {
+          cache: "no-store",
+        });
+
+        if (!response.ok) {
+          throw new Error(`Không tìm thấy ${JSON_FILE_NAME} trên host.`);
+        }
+
+        const text = await response.text();
+        const repoState = normalizeSavedState(JSON.parse(text || "{}"));
+
+        if (!applySavedState(repoState, "repoJson")) {
+          throw new Error(`${JSON_FILE_NAME} không đúng định dạng.`);
+        }
+
+        await saveCurrentState();
+      }
+
       async function loadSavedState() {
         try {
           state.fileHandle = isFileSystemAccessSupported()
@@ -1621,18 +1642,8 @@
           }
 
           try {
-            const response = await fetch(`./${JSON_FILE_NAME}`, {
-              cache: "no-store",
-            });
-
-            if (response.ok) {
-              const text = await response.text();
-              const repoState = normalizeSavedState(JSON.parse(text || "{}"));
-              if (applySavedState(repoState, "repoJson")) {
-                await saveCurrentState();
-                return;
-              }
-            }
+            await applyStateFromRepoJson();
+            return;
           } catch {
             // Ignore repo JSON read errors and fallback to local state.
           }
@@ -1650,6 +1661,13 @@
         }
 
         ensureActiveLineupRow();
+      }
+
+      async function reloadStateFromRepoJson() {
+        await applyStateFromRepoJson();
+        closeSidebar();
+        renderAll();
+        statusLine.textContent = `Đã nạp lại dữ liệu từ ${JSON_FILE_NAME} trên repo.`;
       }
 
       function createJsonBackupText() {
@@ -2879,6 +2897,15 @@
 
       importBtn.addEventListener("click", () => {
         importJsonInput.click();
+      });
+
+      reloadRepoBtn.addEventListener("click", () => {
+        reloadStateFromRepoJson().catch((error) => {
+          console.error(error);
+          alert(
+            `Không nạp được ${JSON_FILE_NAME} từ repo. Kiểm tra xem file đã được deploy lên GitHub Pages chưa.`,
+          );
+        });
       });
 
       importJsonInput.addEventListener("change", () => {
