@@ -1,7 +1,7 @@
 {
   "activeMode": "tier",
-  "activeRole": "Tất cả",
-  "activePosition": "Jungle",
+  "activeRole": "Sát thủ",
+  "activePosition": "AD",
   "activeLineupRowId": "2c7cc3f3-574c-4e6c-b9ef-3b495171d20b",
   "assignmentsByPosition": {
     "Top": {
@@ -76,7 +76,8 @@
       "Valhein": "C",
       "Slimz": "D",
       "Laville": "D",
-      "Stuart": "B"
+      "Stuart": "B",
+      "Murad": "A"
     },
     "SP": {
       "Cresht": "D",

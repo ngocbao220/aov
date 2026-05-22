@@ -658,9 +658,8 @@
     <header>
       <h1>Tier List Tướng Liên Quân Mobile</h1>
       <p class="subtitle">
-        Chuyển giữa tab Tier List và Đội Hình. Kéo thả tướng vào các vùng điểm
-        S, A, B, C, D theo từng vị trí để sắp xếp và theo dõi kèo phối hợp/khắc
-        chế.
+        Chuyển giữa tab Tier List và Đội Hình. Dữ liệu được tự lưu trên trình
+        duyệt; có thể nhập/xuất JSON để đồng bộ khi dùng trên iPad.
       </p>
 
       <div class="toolbar">
@@ -674,6 +673,14 @@
         </label>
 
         <button id="saveBtn">Lưu</button>
+        <button id="exportBtn">Xuất JSON</button>
+        <button id="importBtn">Nhập JSON</button>
+        <input
+          id="importJsonInput"
+          class="hidden"
+          type="file"
+          accept="application/json,.json"
+        />
         <button id="resetBtn">Reset tier</button>
       </div>
 
@@ -1029,6 +1036,9 @@
       const searchInput = document.getElementById("searchInput");
       const resetBtn = document.getElementById("resetBtn");
       const saveBtn = document.getElementById("saveBtn");
+      const exportBtn = document.getElementById("exportBtn");
+      const importBtn = document.getElementById("importBtn");
+      const importJsonInput = document.getElementById("importJsonInput");
       const statusLine = document.getElementById("statusLine");
       const poolTitle = document.getElementById("poolTitle");
       const insightSidebar = document.getElementById("insightSidebar");
@@ -1039,6 +1049,10 @@
       const synergyGrid = document.getElementById("synergyGrid");
       const counterGrid = document.getElementById("counterGrid");
       const closeSidebarBtn = document.getElementById("closeSidebarBtn");
+
+      function isFileSystemAccessSupported() {
+        return typeof window.showSaveFilePicker === "function";
+      }
 
       function normalizeName(name) {
         return String(name || "")
@@ -1534,8 +1548,8 @@
         });
       }
 
-      async function saveCurrentState() {
-        const nextState = {
+      function buildPersistedState() {
+        return {
           activeMode: state.activeMode,
           activeRole: state.activeRole,
           activePosition: state.activePosition,
@@ -1544,13 +1558,47 @@
           lineupRows: state.lineupRows,
           customInsights: state.customInsights,
         };
+      }
 
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
+      async function saveCurrentState() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(buildPersistedState()));
+      }
+
+      function applySavedState(savedState, source) {
+        if (!savedState) {
+          return false;
+        }
+
+        state.activeMode = savedState.activeMode;
+        state.activeRole = savedState.activeRole;
+        state.activePosition = savedState.activePosition;
+        state.activeLineupRowId = savedState.activeLineupRowId;
+        state.assignmentsByPosition = savedState.assignmentsByPosition;
+        state.lineupRows = savedState.lineupRows;
+        state.customInsights = savedState.customInsights;
+        state.storageSource = source;
+        ensureActiveLineupRow();
+        return true;
+      }
+
+      function resetStateToDefaults() {
+        state.activeMode = BOARD_MODES.TIER;
+        state.activeRole = "Tất cả";
+        state.activePosition = "Top";
+        state.activeLineupRowId = "";
+        state.assignmentsByPosition = createEmptyAssignmentsByPosition();
+        state.lineupRows = createDefaultLineupRows();
+        state.customInsights = createEmptyCustomInsights();
+        state.storageSource = "none";
+        state.fileHandle = null;
+        ensureActiveLineupRow();
       }
 
       async function loadSavedState() {
         try {
-          state.fileHandle = await loadFileHandle();
+          state.fileHandle = isFileSystemAccessSupported()
+            ? await loadFileHandle()
+            : null;
 
           if (state.fileHandle && state.fileHandle.requestPermission) {
             const permission = await state.fileHandle.requestPermission({
@@ -1567,51 +1615,112 @@
             const text = await file.text();
             const savedState = normalizeSavedState(JSON.parse(text || "{}"));
 
-            if (savedState) {
-              state.activeMode = savedState.activeMode;
-              state.activeRole = savedState.activeRole;
-              state.activePosition = savedState.activePosition;
-              state.activeLineupRowId = savedState.activeLineupRowId;
-              state.assignmentsByPosition = savedState.assignmentsByPosition;
-              state.lineupRows = savedState.lineupRows;
-              state.customInsights = savedState.customInsights;
-              state.storageSource = "json";
-              ensureActiveLineupRow();
+            if (applySavedState(savedState, "json")) {
               return;
             }
           }
 
-          const legacyState = normalizeSavedState(
+          const localState = normalizeSavedState(
             JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"),
           );
 
-          if (legacyState) {
-            state.activeMode = legacyState.activeMode;
-            state.activeRole = legacyState.activeRole;
-            state.activePosition = legacyState.activePosition;
-            state.activeLineupRowId = legacyState.activeLineupRowId;
-            state.assignmentsByPosition = legacyState.assignmentsByPosition;
-            state.lineupRows = legacyState.lineupRows;
-            state.customInsights = legacyState.customInsights;
-            state.storageSource = "localStorage";
-            ensureActiveLineupRow();
+          if (applySavedState(localState, "localStorage")) {
+            return;
           }
         } catch {
-          state.activeMode = BOARD_MODES.TIER;
-          state.activeRole = "Tất cả";
-          state.activePosition = "Top";
-          state.activeLineupRowId = "";
-          state.assignmentsByPosition = createEmptyAssignmentsByPosition();
-          state.lineupRows = createDefaultLineupRows();
-          state.customInsights = createEmptyCustomInsights();
-          state.storageSource = "none";
-          ensureActiveLineupRow();
+          resetStateToDefaults();
+          return;
+        }
+
+        ensureActiveLineupRow();
+      }
+
+      function createJsonBackupText() {
+        return JSON.stringify(buildPersistedState(), null, 2);
+      }
+
+      function downloadJsonBackup(text, fileName) {
+        const blob = new Blob([text], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = fileName;
+        anchor.rel = "noopener";
+        document.body.appendChild(anchor);
+        anchor.click();
+        document.body.removeChild(anchor);
+        setTimeout(() => URL.revokeObjectURL(url), 0);
+      }
+
+      async function tryNativeShareJsonBackup(text, fileName) {
+        if (!window.isSecureContext) return "unsupported";
+        if (typeof navigator.share !== "function") return "unsupported";
+        if (typeof navigator.canShare !== "function") return "unsupported";
+        if (typeof window.File !== "function") return "unsupported";
+
+        try {
+          const file = new File([text], fileName, {
+            type: "application/json",
+          });
+
+          if (!navigator.canShare({ files: [file] })) {
+            return "unsupported";
+          }
+
+          await navigator.share({
+            title: fileName,
+            text: "Backup tier list và đội hình",
+            files: [file],
+          });
+
+          return "shared";
+        } catch (error) {
+          if (error && error.name === "AbortError") {
+            return "cancelled";
+          }
+          return "failed";
         }
       }
 
+      async function exportStateToJsonFile() {
+        const text = createJsonBackupText();
+        const fileName = JSON_FILE_NAME;
+        const shareResult = await tryNativeShareJsonBackup(text, fileName);
+
+        if (shareResult === "shared") {
+          state.storageSource = "export";
+          statusLine.textContent =
+            "Đã mở bảng chia sẻ file JSON. Bạn có thể lưu vào Files/iCloud trên iPad.";
+          return;
+        }
+
+        if (shareResult === "cancelled") {
+          statusLine.textContent = "Đã huỷ thao tác chia sẻ file JSON.";
+          return;
+        }
+
+        downloadJsonBackup(text, fileName);
+        state.storageSource = "export";
+        statusLine.textContent = `Đã xuất dữ liệu thành file ${fileName}.`;
+      }
+
+      async function importStateFromJsonText(text) {
+        const savedState = normalizeSavedState(JSON.parse(text || "{}"));
+
+        if (!applySavedState(savedState, "import")) {
+          throw new Error("File JSON không đúng định dạng.");
+        }
+
+        closeSidebar();
+        await saveCurrentState();
+        renderAll();
+      }
+
       async function chooseJsonFile() {
-        if (!window.showSaveFilePicker) {
-          alert("Trình duyệt này không hỗ trợ chọn file JSON.");
+        if (!isFileSystemAccessSupported()) {
+          alert(
+            "Safari iPad không hỗ trợ chọn file lưu trực tiếp. Hãy dùng nút 'Xuất JSON'.",
+          );
           return;
         }
 
@@ -1635,6 +1744,14 @@
       }
 
       async function saveToJsonFile() {
+        if (!isFileSystemAccessSupported()) {
+          await saveCurrentState();
+          state.storageSource = "localStorage";
+          statusLine.textContent =
+            "Đã lưu cục bộ trên trình duyệt. Dùng 'Xuất JSON' để sao lưu sang Files/iCloud.";
+          return;
+        }
+
         if (!state.fileHandle) {
           await chooseJsonFile();
         }
@@ -1643,17 +1760,7 @@
           return;
         }
 
-        const nextState = {
-          activeMode: state.activeMode,
-          activeRole: state.activeRole,
-          activePosition: state.activePosition,
-          activeLineupRowId: state.activeLineupRowId,
-          assignmentsByPosition: state.assignmentsByPosition,
-          lineupRows: state.lineupRows,
-          customInsights: state.customInsights,
-        };
-
-        const text = JSON.stringify(nextState, null, 2);
+        const text = createJsonBackupText();
         const writable = await state.fileHandle.createWritable({
           keepExistingData: false,
         });
@@ -1690,14 +1797,16 @@
             state.storageSource === "json"
               ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu đã khôi phục từ file JSON.`
               : state.storageSource === "localStorage"
-                ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu cũ đã nạp tạm thời; hãy chọn/tạo file JSON để lưu lâu dài.`
-                : `Đã tải ${state.heroes.length} tướng từ heroes.json. Chưa có file JSON nào được chọn.`;
+                ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu cục bộ đã được khôi phục.`
+                : state.storageSource === "import"
+                  ? `Đã tải ${state.heroes.length} tướng từ heroes.json. Dữ liệu đã nạp từ file JSON nhập tay.`
+                  : `Đã tải ${state.heroes.length} tướng từ heroes.json. Bạn có thể lưu cục bộ hoặc xuất JSON để sao lưu.`;
         } catch (error) {
           state.heroes = SAMPLE_HEROES;
           statusLine.textContent =
             state.storageSource === "json"
               ? "Chưa đọc được heroes.json, đang dùng dữ liệu mẫu. Dữ liệu tier/đội hình vẫn lấy từ file JSON."
-              : "Chưa đọc được heroes.json, đang dùng dữ liệu mẫu. Hãy đặt heroes.json cùng thư mục với index.html và chạy bằng Live Server.";
+              : "Chưa đọc được heroes.json, đang dùng dữ liệu mẫu. Hãy đảm bảo heroes.json nằm cùng thư mục và web được mở qua HTTP/HTTPS.";
         }
       }
 
@@ -2729,11 +2838,47 @@
         closeSidebar();
       });
 
+      if (!isFileSystemAccessSupported()) {
+        saveBtn.textContent = "Lưu cục bộ";
+      } else {
+        saveBtn.textContent = "Lưu vào file";
+      }
+
       saveBtn.addEventListener("click", () => {
         saveToJsonFile().catch((error) => {
           console.error(error);
-          alert("Không lưu được file JSON.");
+          alert("Không lưu được dữ liệu.");
         });
+      });
+
+      exportBtn.addEventListener("click", () => {
+        exportStateToJsonFile().catch((error) => {
+          console.error(error);
+          alert("Không xuất được file JSON.");
+        });
+      });
+
+      importBtn.addEventListener("click", () => {
+        importJsonInput.click();
+      });
+
+      importJsonInput.addEventListener("change", () => {
+        const file = importJsonInput.files && importJsonInput.files[0];
+        if (!file) return;
+
+        file
+          .text()
+          .then((text) => importStateFromJsonText(text))
+          .then(() => {
+            statusLine.textContent = `Đã nhập dữ liệu từ ${file.name}.`;
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("File JSON không hợp lệ hoặc không đúng cấu trúc.");
+          })
+          .finally(() => {
+            importJsonInput.value = "";
+          });
       });
 
       resetBtn.addEventListener("click", () => {
@@ -2769,7 +2914,7 @@
         renderAll();
         if (state.storageSource === "none") {
           statusLine.textContent =
-            "Hãy bấm 'Lưu' một lần để chọn/tạo file JSON, sau đó bấm Lưu để ghi thay đổi.";
+            "Chưa có dữ liệu cũ. Bạn có thể dùng 'Lưu cục bộ' và định kỳ 'Xuất JSON' để backup.";
         }
       })();
     </script>
