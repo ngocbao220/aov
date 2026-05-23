@@ -1286,7 +1286,8 @@
 
       function normalizeLineupHeroList(rawList) {
         if (typeof rawList === "string") {
-          return [rawList];
+          const trimmed = rawList.trim();
+          return trimmed ? [trimmed] : [];
         }
 
         if (!Array.isArray(rawList)) {
@@ -1294,7 +1295,8 @@
         }
 
         return rawList
-          .filter((item) => typeof item === "string" && item.trim())
+          .map((item) => (typeof item === "string" ? item.trim() : ""))
+          .filter(Boolean)
           .filter((name, index, arr) => arr.indexOf(name) === index);
       }
 
@@ -1335,18 +1337,18 @@
         const normalized = [];
         const seenIds = new Set();
 
-        function appendRow(rawId, rawLabel, rawSlots, indexHint) {
+        function appendRow(targetRows, targetSeenIds, rawId, rawLabel, rawSlots, indexHint) {
           const rowId =
             typeof rawId === "string" && rawId.trim()
               ? rawId
               : createLineupRowId();
 
-          if (seenIds.has(rowId)) {
+          if (targetSeenIds.has(rowId)) {
             return;
           }
 
-          seenIds.add(rowId);
-          normalized.push({
+          targetSeenIds.add(rowId);
+          targetRows.push({
             id: rowId,
             label:
               String(rawLabel || "").trim() ||
@@ -1359,6 +1361,8 @@
           rawRows.forEach((row, index) => {
             if (!row || typeof row !== "object") return;
             appendRow(
+              normalized,
+              seenIds,
               row.id,
               row.label || row.name || row.title,
               row.slots || row.positions || row.heroesByPosition || row,
@@ -1369,6 +1373,8 @@
           Object.entries(rawRows).forEach(([key, row], index) => {
             if (!row || typeof row !== "object") return;
             appendRow(
+              normalized,
+              seenIds,
               row.id || key,
               row.label || row.name || row.title || key,
               row.slots || row.positions || row.heroesByPosition || row,
@@ -1377,11 +1383,9 @@
           });
         }
 
-        if (
-          normalized.length === 0 &&
-          legacyLineupsByTier &&
-          typeof legacyLineupsByTier === "object"
-        ) {
+        const legacyNormalized = [];
+        const legacySeenIds = new Set();
+        if (legacyLineupsByTier && typeof legacyLineupsByTier === "object") {
           const legacyKeys = Object.keys(legacyLineupsByTier);
           const sortedLegacyKeys = legacyKeys.sort((a, b) => {
             const aTierIndex = tiers.indexOf(a);
@@ -1398,12 +1402,43 @@
             const legacyRow = legacyLineupsByTier[legacyKey];
             if (!legacyRow || typeof legacyRow !== "object") return;
             appendRow(
+              legacyNormalized,
+              legacySeenIds,
               "",
               legacyKey,
               legacyRow,
               index,
             );
           });
+        }
+
+        function countHeroes(rows) {
+          return rows.reduce((sum, row) => {
+            if (!row || !row.slots || typeof row.slots !== "object") {
+              return sum;
+            }
+            return (
+              sum +
+              FORMATION_POSITIONS.reduce((slotSum, position) => {
+                const list = row.slots[position];
+                return slotSum + (Array.isArray(list) ? list.length : 0);
+              }, 0)
+            );
+          }, 0);
+        }
+
+        if (normalized.length === 0 && legacyNormalized.length > 0) {
+          return legacyNormalized;
+        }
+
+        const normalizedHeroCount = countHeroes(normalized);
+        const legacyHeroCount = countHeroes(legacyNormalized);
+        if (
+          normalized.length > 0 &&
+          normalizedHeroCount === 0 &&
+          legacyHeroCount > 0
+        ) {
+          return legacyNormalized;
         }
 
         if (normalized.length === 0) {
@@ -2488,10 +2523,13 @@
             setupLineupDropZone(slot);
 
             const heroesInSlot = getLineupSlot(lineupRow.id, position);
-            if (heroesInSlot.length === 0) {
+            const validHeroes = heroesInSlot.filter((heroName) =>
+              Boolean(getHero(heroName)),
+            );
+            if (validHeroes.length === 0) {
               slot.appendChild(emptyText("Thả tướng"));
             } else {
-              heroesInSlot.forEach((heroName) => {
+              validHeroes.forEach((heroName) => {
                 slot.appendChild(
                   createHeroCard(heroName, "lineup", {
                     rowId: lineupRow.id,

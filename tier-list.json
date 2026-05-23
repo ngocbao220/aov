@@ -1,8 +1,8 @@
 {
   "activeMode": "lineup",
-  "activeRole": "Đấu sĩ",
+  "activeRole": "Xạ thủ",
   "activePosition": "Top",
-  "activeLineupRowId": "64394906-b5a4-48f4-b4f6-678ace204224",
+  "activeLineupRowId": "7e5c0557-4ba6-4c75-a0f1-2050331b6ae3",
   "assignmentsByPosition": {
     "Top": {
       "Biron": "B",
@@ -104,10 +104,7 @@
       "label": "S",
       "slots": {
         "Top": [
-          "Biron",
-          "Qi",
-          "Ryoma",
-          "Omen"
+          "Toro"
         ],
         "Mid": [
           "Rouie"
@@ -116,9 +113,7 @@
           "Tachi"
         ],
         "AD": [],
-        "SP": [
-          "Toro"
-        ]
+        "SP": []
       }
     },
     {
@@ -141,7 +136,8 @@
           "Valhein"
         ],
         "SP": [
-          "Dyadia"
+          "Dyadia",
+          "Cresht"
         ]
       }
     },
@@ -150,39 +146,32 @@
       "label": "S",
       "slots": {
         "Top": [
-          "Florentino"
+          "Qi"
         ],
         "Mid": [
-          "Zata",
-          "Jinna"
+          "Zata"
         ],
         "Jungle": [
           "Max"
         ],
         "AD": [
-          "Stuart",
-          "Capheny"
+          "Stuart"
         ],
         "SP": [
-          "Dolia",
-          "Toro"
+          "Dolia"
         ]
       }
     },
     {
       "id": "7ee79780-ab20-413b-ae92-74f0856b200d",
-      "label": "C",
+      "label": "A",
       "slots": {
-        "Top": [
-          "Taara"
-        ],
+        "Top": [],
         "Mid": [
           "Liliana"
         ],
         "Jungle": [],
-        "AD": [
-          "Hayate"
-        ],
+        "AD": [],
         "SP": [
           "Krizzix"
         ]
@@ -190,14 +179,10 @@
     },
     {
       "id": "3ebe7cb6-6253-45b6-85bb-9ad2e21799b0",
-      "label": "D",
+      "label": "Snow ball",
       "slots": {
-        "Top": [
-          "Qi"
-        ],
-        "Mid": [
-          "Ignis"
-        ],
+        "Top": [],
+        "Mid": [],
         "Jungle": [],
         "AD": [
           "Valhein"
@@ -209,17 +194,18 @@
     },
     {
       "id": "64394906-b5a4-48f4-b4f6-678ace204224",
-      "label": "Đội hình 6",
+      "label": "Cấu rỉa",
       "slots": {
-        "Top": [
-          "Ryoma"
-        ],
+        "Top": [],
         "Mid": [],
-        "Jungle": [
-          "Edras"
+        "Jungle": [],
+        "AD": [
+          "Wisp",
+          "Violet"
         ],
-        "AD": [],
-        "SP": []
+        "SP": [
+          "TeeMee"
+        ]
       }
     },
     {
@@ -227,9 +213,28 @@
       "label": "Đội hình 7",
       "slots": {
         "Top": [],
-        "Mid": [],
-        "Jungle": [],
+        "Mid": [
+          "Rouie"
+        ],
+        "Jungle": [
+          "Volkath"
+        ],
         "AD": [],
+        "SP": []
+      }
+    },
+    {
+      "id": "c44fc26a-e330-4108-8d9f-48dab489305c",
+      "label": "Đội hình 8",
+      "slots": {
+        "Top": [],
+        "Mid": [
+          "Rouie"
+        ],
+        "Jungle": [],
+        "AD": [
+          "Flowborn_AD"
+        ],
         "SP": []
       }
     }
@@ -334,18 +339,7 @@
       "Eland’orr": {
         "seeded": true,
         "synergy": [
-          "Marja",
-          "Ryoma",
-          "Bolt Baron",
-          "Murad",
-          "Sinestrea",
-          "Astrid",
-          "Billow",
-          "Keera",
-          "Lorion",
-          "Rouie",
-          "Zata",
-          "Flowborn_AP"
+          "Ryoma"
         ],
         "counters": [
           "Marja",
@@ -386,6 +380,167 @@
           "Rouie",
           "Zata"
         ]
+      },
+      "Krizzix": {
+        "seeded": true,
+        "synergy": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Eland’orr",
+          "Sinestrea",
+          "Astrid",
+          "Billow",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Hayate": {
+        "seeded": true,
+        "synergy": [
+          "Murad",
+          "Eland’orr",
+          "Wisp",
+          "Capheny",
+          "Flowborn_AD"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi",
+          "Flowborn_AD",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Qi": {
+        "seeded": true,
+        "synergy": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Eland’orr",
+          "Sinestrea",
+          "Astrid",
+          "Billow",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Flowborn_AD",
+          "Hayate",
+          "Murad",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Iggy": {
+        "seeded": true,
+        "synergy": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Eland’orr",
+          "Sinestrea",
+          "Astrid",
+          "Billow",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Capheny": {
+        "seeded": true,
+        "synergy": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Eland’orr",
+          "Sinestrea",
+          "Astrid",
+          "Billow",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Bolt Baron",
+          "Murad",
+          "Qi",
+          "Flowborn_AD",
+          "Hayate",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
+      },
+      "Bolt Baron": {
+        "seeded": true,
+        "synergy": [],
+        "counters": [
+          "Marja",
+          "Ryoma",
+          "Flowborn_AD",
+          "Hayate",
+          "Murad",
+          "Wisp",
+          "Lorion",
+          "Rouie",
+          "Zata",
+          "Flowborn_AP"
+        ]
       }
     },
     "lineups": {
@@ -393,6 +548,24 @@
         "seeded": true,
         "counters": [
           "Hayate"
+        ]
+      },
+      "ec944912-70ac-4a55-b77c-5abed1efb18e": {
+        "seeded": true,
+        "counters": [
+          "Dolia",
+          "Zata",
+          "Mganga"
+        ]
+      },
+      "7e5c0557-4ba6-4c75-a0f1-2050331b6ae3": {
+        "seeded": true,
+        "counters": [
+          "Volkath",
+          "Lorion",
+          "Marja",
+          "Tachi",
+          "Rouie"
         ]
       },
       "7ee79780-ab20-413b-ae92-74f0856b200d": {
@@ -414,7 +587,7 @@
           "TeeMee"
         ]
       },
-      "ec944912-70ac-4a55-b77c-5abed1efb18e": {
+      "3ebe7cb6-6253-45b6-85bb-9ad2e21799b0": {
         "seeded": true,
         "counters": [
           "Eland’orr",
@@ -431,16 +604,6 @@
           "Bolt Baron",
           "Murad",
           "TeeMee"
-        ]
-      },
-      "7e5c0557-4ba6-4c75-a0f1-2050331b6ae3": {
-        "seeded": true,
-        "counters": [
-          "Marja",
-          "Ryoma",
-          "Bolt Baron",
-          "Murad",
-          "Qi"
         ]
       },
       "64394906-b5a4-48f4-b4f6-678ace204224": {
@@ -481,7 +644,7 @@
           "TeeMee"
         ]
       },
-      "3ebe7cb6-6253-45b6-85bb-9ad2e21799b0": {
+      "c44fc26a-e330-4108-8d9f-48dab489305c": {
         "seeded": true,
         "counters": [
           "Eland’orr",
