@@ -1,8 +1,8 @@
 {
   "activeMode": "lineup",
   "activeRole": "Đấu sĩ",
-  "activePosition": "AD",
-  "activeLineupRowId": "d04f5cbe-e17f-4ca7-a2b2-c589c13fabf0",
+  "activePosition": "Top",
+  "activeLineupRowId": "2c7cc3f3-574c-4e6c-b9ef-3b495171d20b",
   "assignmentsByPosition": {
     "Top": {
       "Biron": "B",
@@ -104,7 +104,8 @@
       "label": "S",
       "slots": {
         "Top": [
-          "Toro"
+          "Qi",
+          "Skud"
         ],
         "Mid": [
           "Rouie"
@@ -112,8 +113,13 @@
         "Jungle": [
           "Tachi"
         ],
-        "AD": [],
-        "SP": []
+        "AD": [
+          "Capheny",
+          "Stuart"
+        ],
+        "SP": [
+          "Toro"
+        ]
       }
     },
     {
@@ -686,19 +692,11 @@
         "seeded": true,
         "counters": [
           "Eland’orr",
-          "Flowborn_AD",
           "Lorion",
-          "Marja",
-          "Y’bneth",
-          "Dyadia",
           "Hayate",
           "Rouie",
-          "Ryoma",
           "Sinestrea",
-          "Astrid",
-          "Bolt Baron",
-          "Murad",
-          "TeeMee"
+          "Ignis"
         ]
       }
     }
