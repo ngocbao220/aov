@@ -1,8 +1,8 @@
 {
   "activeMode": "lineup",
-  "activeRole": "Xạ thủ",
-  "activePosition": "Top",
-  "activeLineupRowId": "7e5c0557-4ba6-4c75-a0f1-2050331b6ae3",
+  "activeRole": "Trợ thủ",
+  "activePosition": "AD",
+  "activeLineupRowId": "d04f5cbe-e17f-4ca7-a2b2-c589c13fabf0",
   "assignmentsByPosition": {
     "Top": {
       "Biron": "B",
@@ -236,6 +236,21 @@
           "Flowborn_AD"
         ],
         "SP": []
+      }
+    },
+    {
+      "id": "d04f5cbe-e17f-4ca7-a2b2-c589c13fabf0",
+      "label": "Đội hình 9",
+      "slots": {
+        "Top": [],
+        "Mid": [
+          "Aya"
+        ],
+        "Jungle": [],
+        "AD": [],
+        "SP": [
+          "Toro"
+        ]
       }
     }
   ],
@@ -645,6 +660,25 @@
         ]
       },
       "c44fc26a-e330-4108-8d9f-48dab489305c": {
+        "seeded": true,
+        "counters": [
+          "Eland’orr",
+          "Flowborn_AD",
+          "Lorion",
+          "Marja",
+          "Y’bneth",
+          "Dyadia",
+          "Hayate",
+          "Rouie",
+          "Ryoma",
+          "Sinestrea",
+          "Astrid",
+          "Bolt Baron",
+          "Murad",
+          "TeeMee"
+        ]
+      },
+      "d04f5cbe-e17f-4ca7-a2b2-c589c13fabf0": {
         "seeded": true,
         "counters": [
           "Eland’orr",
