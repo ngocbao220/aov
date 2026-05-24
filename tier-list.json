@@ -1,6 +1,6 @@
 {
   "activeMode": "lineup",
-  "activeRole": "Trợ thủ",
+  "activeRole": "Đấu sĩ",
   "activePosition": "AD",
   "activeLineupRowId": "d04f5cbe-e17f-4ca7-a2b2-c589c13fabf0",
   "assignmentsByPosition": {
@@ -227,15 +227,19 @@
       "id": "c44fc26a-e330-4108-8d9f-48dab489305c",
       "label": "Đội hình 8",
       "slots": {
-        "Top": [],
+        "Top": [
+          "Omen"
+        ],
         "Mid": [
-          "Rouie"
+          "Gildur"
         ],
         "Jungle": [],
         "AD": [
           "Flowborn_AD"
         ],
-        "SP": []
+        "SP": [
+          "Cresht"
+        ]
       }
     },
     {
